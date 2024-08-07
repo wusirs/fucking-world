@@ -1,0 +1,17 @@
+server:
+  #程序端口号
+  port: 8089
+spring:
+  application:
+    name: blbl-cloud
+  profiles:
+    active: dev
+  cloud:
+    bootstrap:
+      enabled: true
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+      discovery:
+        server-addr: 127.0.0.1:8848
