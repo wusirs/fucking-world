@@ -34,9 +34,10 @@
         <fastjson.version>2.0.12</fastjson.version>
         <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
         <lombok.version>1.18.24</lombok.version>
-        <hutool.core.version>5.8.20</hutool.core.version>
-        <hutool.all.version>5.8.20</hutool.all.version>
+        <hutool.core.version>5.8.25</hutool.core.version>
+        <hutool.all.version>5.8.25</hutool.all.version>
         <bootstrap.version>3.0.1</bootstrap.version>
+        <nacos.version>2021.0.5.0</nacos.version>
     </properties>
 
     <!--  因为是总项目,所以用dependencyManagement来管理，子项目不用管理版本了，可以直接引用 子模块继承之后，提供作用：锁定版本+子module不用写groupId和version -->
@@ -172,12 +173,20 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>2021.0.5.0</version>
+                <version>${nacos.version}</version>
             </dependency>
 
+            <!--spring web -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!--redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
         </dependencies>
@@ -193,7 +202,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-<!--                    <release>1.8</release>-->
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>

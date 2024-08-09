@@ -37,3 +37,6 @@ build/
 ### Mac OS ###
 .DS_Store
 /blbl-moudle/src/main/java/com/blbl/Main.java
+/.idea/
+/logs/
+/derby.log
