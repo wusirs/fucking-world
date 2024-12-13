@@ -8,6 +8,9 @@ spring:
         server-addr: 127.0.0.1:8848
         group: DEFAULT_GROUP
         file-extension: yml
+        shared-configs:
+          - data-id: ds-common.yml
+            refresh: true
 logging:
   level:
     org:

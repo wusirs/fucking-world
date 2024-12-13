@@ -40,3 +40,4 @@ build/
 /.idea/
 /logs/
 /derby.log
+/.fastRequest/
