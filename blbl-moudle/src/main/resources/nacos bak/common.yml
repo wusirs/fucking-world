@@ -1,0 +1,4 @@
+psr:
+  gateway:
+    url: http://localhost:3122/test1
+    tUrl: http://localhost:3122/test2
