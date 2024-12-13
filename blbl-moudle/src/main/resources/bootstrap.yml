@@ -9,7 +9,7 @@ spring:
         group: DEFAULT_GROUP
         file-extension: yml
         shared-configs:
-          - data-id: ds-common.yml
+          - data-id: common.yml
             refresh: true
 logging:
   level:
