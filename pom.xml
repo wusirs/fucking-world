@@ -38,6 +38,7 @@
         <hutool.all.version>5.8.25</hutool.all.version>
         <bootstrap.version>3.0.1</bootstrap.version>
         <nacos.version>2021.0.5.0</nacos.version>
+        <spring-cloud-feign.version>4.2.0</spring-cloud-feign.version>
     </properties>
 
     <!--  因为是总项目,所以用dependencyManagement来管理，子项目不用管理版本了，可以直接引用 子模块继承之后，提供作用：锁定版本+子module不用写groupId和version -->
@@ -113,13 +114,6 @@
                 <version>${log4j.version}</version>
             </dependency>
 
-            <!--单元测试-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${test-version}</version>
-            </dependency>
-
             <!-- Collection 增强Java集合框架 -->
             <dependency>
                 <groupId>commons-collections</groupId>
@@ -171,10 +165,26 @@
 
             <!--nacos 服务发现 -->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
+                <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${nacos.version}</version>
             </dependency>
+
+            <!--nacos配置管理依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+
+            <!--      openfeign      -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-feign.version}</version>
+            </dependency>
+
+
 
             <!--spring web -->
             <dependency>
