@@ -9,6 +9,10 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 @Configuration
 public class RedisConfig {
 
+    /**
+     * redis
+     * @return LettuceConnectionFactory
+     */
     @Bean
     LettuceConnectionFactory redisConnectionFactory() {
         // 连接 redis 配置
