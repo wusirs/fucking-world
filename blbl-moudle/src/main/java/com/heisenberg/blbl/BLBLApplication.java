@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * spring boot 启动类。
- * @author heisenberg
+ * spring boot 启动类
+ * @author Ciao
  * @date 2024/08/09
  */
 @SpringBootApplication
