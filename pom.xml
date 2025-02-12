@@ -39,6 +39,8 @@
         <bootstrap.version>3.0.1</bootstrap.version>
         <nacos.version>2021.0.5.0</nacos.version>
         <spring-cloud-feign.version>4.2.0</spring-cloud-feign.version>
+        <spring-cloud-starter-loadbalancer-version>3.1.7</spring-cloud-starter-loadbalancer-version>
+        <spring-boot-starter-webflux-version>2.7.18</spring-boot-starter-webflux-version>
     </properties>
 
     <!--  因为是总项目,所以用dependencyManagement来管理，子项目不用管理版本了，可以直接引用 子模块继承之后，提供作用：锁定版本+子module不用写groupId和version -->
@@ -168,6 +170,19 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${nacos.version}</version>
+            </dependency>
+
+            <!--      负载均衡      -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud-starter-loadbalancer-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${spring-boot-starter-webflux-version}</version>
             </dependency>
 
             <!--nacos配置管理依赖-->
