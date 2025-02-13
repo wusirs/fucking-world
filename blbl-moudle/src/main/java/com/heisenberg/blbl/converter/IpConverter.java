@@ -10,6 +10,10 @@ import java.net.UnknownHostException;
 @Slf4j
 public class IpConverter extends PropertyDefinerBase {
 
+    /**
+     * 获取服务ip
+     * @return String
+     */
     @Override
     public String getPropertyValue() {
         String ip = "";
