@@ -9,7 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.world.fucking</groupId>
     <artifactId>fucking-server</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
