@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.blbl</groupId>
-    <artifactId>blbl-moudle</artifactId>
+    <artifactId>blbl-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>blbl-moudle</name>
