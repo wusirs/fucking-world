@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>blbl-service</module>
+        <module>fucking-server</module>
     </modules>
 <!--https://blog.csdn.net/weixin_42606126/article/details/140496589-->
 
