@@ -41,6 +41,12 @@
         <spring-cloud-feign.version>4.2.0</spring-cloud-feign.version>
         <spring-cloud-starter-loadbalancer-version>3.1.7</spring-cloud-starter-loadbalancer-version>
         <spring-boot-starter-webflux-version>2.7.18</spring-boot-starter-webflux-version>
+        <spring.redisson.version>3.16.2</spring.redisson.version>
+        <itextpdf.version>5.1.0</itextpdf.version>
+        <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <swagger.version>1.5.13</swagger.version>
     </properties>
 
     <!--  因为是总项目,所以用dependencyManagement来管理，子项目不用管理版本了，可以直接引用 子模块继承之后，提供作用：锁定版本+子module不用写groupId和version -->
@@ -213,6 +219,56 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!--Redisson-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${spring.redisson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf</artifactId>
+                <version>${itextpdf.version}</version>
+            </dependency>
+
+            <!--mapStruct依赖-->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
