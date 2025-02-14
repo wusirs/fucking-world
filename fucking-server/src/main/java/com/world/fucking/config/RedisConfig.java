@@ -1,4 +1,4 @@
-package com.heisenberg.blbl.config;
+package com.world.fucking.config;
 
 
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: blbl-cloud
+    name: fucking-world
   cloud:
     nacos:
       config:
