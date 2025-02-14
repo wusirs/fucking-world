@@ -1,4 +1,4 @@
-package com.heisenberg.blbl.converter;
+package com.world.fucking.converter;
 
 
 import ch.qos.logback.core.PropertyDefinerBase;
@@ -10,6 +10,10 @@ import java.net.UnknownHostException;
 @Slf4j
 public class IpConverter extends PropertyDefinerBase {
 
+    /**
+     * 获取服务ip
+     * @return String
+     */
     @Override
     public String getPropertyValue() {
         String ip = "";
