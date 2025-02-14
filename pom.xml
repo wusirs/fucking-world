@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.heisenberg</groupId>
-    <artifactId>blbl-cloud</artifactId>
+    <artifactId>fucking-world</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>blbl-moudle</module>
+        <module>fucking-server</module>
     </modules>
 <!--https://blog.csdn.net/weixin_42606126/article/details/140496589-->
 

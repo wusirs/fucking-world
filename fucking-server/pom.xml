@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.heisenberg</groupId>
-        <artifactId>blbl-cloud</artifactId>
+        <artifactId>fucking-world</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.blbl</groupId>
-    <artifactId>blbl-moudle</artifactId>
+    <artifactId>fucking-server</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>blbl-moudle</name>
