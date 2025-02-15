@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.world.fucking.domain.Comment;
 import com.world.fucking.service.CommentService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,8 +41,9 @@ public class CommentController {
      * @param username 姓名
      * @return {@link List<Comment>}
      */
-    @GetMapping("hello")
-    public List<Comment> helloGet(String username) {
+    @ApiOperation(value = "获取评论")
+    @GetMapping("getComment")
+    public List<Comment> getComment(String username) {
         LOGGER.info(username);
         List<Comment> comments = commentService.queryAll();
         LOGGER.info("comments: {}", comments);
@@ -49,21 +51,12 @@ public class CommentController {
     }
 
     /**
-     * 测试接口
-     * @return {@link String}
-     */
-    @PostMapping("hello")
-    public String helloPost() {
-        return "post hello world！";
-    }
-
-
-    /**
      * 条件查询
      * @param username 姓名
      * @return {@link List<Comment>}
      * @throws ParseException 解析异常
      */
+    @ApiOperation("查询评论")
     @GetMapping("byCondition")
     public List<Comment> byCondition(String username) throws ParseException {
         LOGGER.info(username);
@@ -76,6 +69,7 @@ public class CommentController {
      * 查询所有
      * @return {@link List<Comment>}
      */
+    @ApiOperation("查询评论")
     @PostMapping("queryByCondition")
     public List<Comment> queryByCondition(@RequestBody Map<String, Object> params) {
         return commentService.queryByCondition(params);
@@ -85,6 +79,7 @@ public class CommentController {
      * 查询所有
      * @return {@link List<Comment>}
      */
+    @ApiOperation("查询评论")
     @PostMapping("queryByWrapper")
     public IPage<Comment> queryByWrapper(@RequestBody JSONObject queryCondition) {
         return commentService.queryByWrapper(queryCondition);

@@ -40,7 +40,7 @@ public class ConfigController {
      * @return String
      */
     @GetMapping("dateformat")
-    public String now() {
+    public String dateformat() {
         log.info("url: {}, tUrl: {}", psrUrl, psrTUrl);
         return dateformat;
     }
