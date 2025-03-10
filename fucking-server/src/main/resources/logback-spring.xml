@@ -126,7 +126,6 @@
     <!--            <charset>utf-8</charset>-->
     <!--        </encoder>-->
     <!--    </appender>-->
-
     <!--系统操作日志-->
     <root level="info">
         <appender-ref ref="console"/>
