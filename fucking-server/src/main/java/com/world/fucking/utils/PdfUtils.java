@@ -261,7 +261,7 @@ public class PdfUtils {
      * @param full     是否平铺
      * @throws Exception 异常
      */
-    public static void addWater(PdfContentByte waterMar, String text, boolean full) throws Exception {
+    public static void addWater(PdfContentByte waterMar, String text, boolean full) throws DocumentException, IOException {
         if (CharSequenceUtil.isEmpty(text)) {
             return;
         }
@@ -346,8 +346,8 @@ public class PdfUtils {
 
             // 将页码写到距离pdf底部30px的位置
             table.writeSelectedRows(0, -1, 0, 30, pdfWriter.getDirectContent());
-        } catch (Exception e) {
-            throw new RuntimeException("设置页眉失败！");
+        } catch (DocumentException e) {
+            throw new IllegalStateException("PDF文档操作失败", e);
         }
     }
 }
