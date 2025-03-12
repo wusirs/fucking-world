@@ -16,7 +16,7 @@ import java.util.Objects;
 
 /**
  * @author Heisenberg
- * @version 1.0
+ * @since 1.0.0
  */
 @RestControllerAdvice
 public class ResponseResult implements ResponseBodyAdvice<Object> {

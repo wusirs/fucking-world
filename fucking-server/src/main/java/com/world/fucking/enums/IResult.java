@@ -4,7 +4,7 @@ package com.world.fucking.enums;
  * 定义返回数据结构
  * @author Heisenberg
 
- * @version 1.0
+ * @since 1.0.0
  */
 public interface IResult {
     /**

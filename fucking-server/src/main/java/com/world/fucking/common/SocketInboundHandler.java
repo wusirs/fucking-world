@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Heisenberg
- * @version 1.0
+ * @since 1.0.0
  */
 @Slf4j
 public class SocketInboundHandler extends ChannelInboundHandlerAdapter {

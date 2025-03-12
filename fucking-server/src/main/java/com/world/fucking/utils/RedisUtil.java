@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * redis 工具类
  * @author Heisenberg
  * @date 2024-03-15 12:44:44
- * @version 1.0
+ * @since 1.0.0
  */
 
 @Component

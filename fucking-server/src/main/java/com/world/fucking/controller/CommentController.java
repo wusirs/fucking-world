@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * @author heisenberg
- * @version 1.0
+ * @since 1.0.0
  */
 @RestController
 @CrossOrigin

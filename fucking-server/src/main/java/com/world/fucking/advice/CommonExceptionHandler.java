@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * <a href='https://blog.csdn.net/weixin_43811057/article/details/127638674'>参考<a/>
  *
  * @author Heisenberg
- * @version 1.0
+ * @since 1.0.0
 
  */
 @RestControllerAdvice

@@ -9,7 +9,7 @@ import com.world.fucking.domain.CityCode;
  * 邮政编码service
  * @author heisenberg
  * @date 2024/02/19
- * @version 1.0
+ * @since 1.0.0
  */
 public interface CityCodeService extends IService<CityCode> {
     /**

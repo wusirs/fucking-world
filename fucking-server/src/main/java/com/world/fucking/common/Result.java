@@ -9,7 +9,7 @@ import org.springframework.lang.NonNull;
 
 /**
  * @author Heisenberg
- * @version 1.0
+ * @since 1.0.0
  */
 @Data
 @NoArgsConstructor

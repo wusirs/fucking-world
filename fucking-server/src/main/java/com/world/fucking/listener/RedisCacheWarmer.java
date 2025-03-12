@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Heisenberg
- * @version 1.0
+ * @since 1.0.0
  * @date 2024-03-18 18:14:14
  */
 @Component

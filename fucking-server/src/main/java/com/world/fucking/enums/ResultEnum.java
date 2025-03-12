@@ -4,7 +4,7 @@ package com.world.fucking.enums;
  *
  * @author Heisenberg
 
- * @version 1.0
+ * @since 1.0.0
  */
 public enum ResultEnum implements IResult{
     SUCCESS(200, "成功"),

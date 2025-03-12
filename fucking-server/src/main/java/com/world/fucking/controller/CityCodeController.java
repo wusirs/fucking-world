@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 城市编码
  * @author Ciao
- * @version 1.0
+ * @since 1.0.0
  */
 @RestController
 @RequestMapping("cityCode")
