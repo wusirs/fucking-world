@@ -18,6 +18,7 @@ import java.util.Base64;
  *
  * @author ACGkaka
  */
+@SuppressWarnings("all")
 public class AESUtil {
     /**
      * 日志相关

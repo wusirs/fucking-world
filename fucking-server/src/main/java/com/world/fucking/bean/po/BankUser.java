@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,4 +18,6 @@ public class BankUser {
      * db数据库存的是 id 字符串 ==> 1,2,3
      */
     private String bankCards;
+
+    private List<BankCard> bankCardList;
 }
