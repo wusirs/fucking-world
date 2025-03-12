@@ -1,9 +1,8 @@
 package com.world.fucking.exception;
 
 /**
- * @author Heisenberg
-
- * @version 1.0
+ * @author heisenberg
+ * @since 1.0.0
  */
 public class BusinessException extends RuntimeException {
     /**
@@ -12,11 +11,20 @@ public class BusinessException extends RuntimeException {
     private final Integer status;
 
 
+    /**
+     * 有参构造
+     * @param status 状态码
+     */
     public BusinessException(int status) {
         super();
         this.status = status;
     }
 
+    /**
+     * 有参构造
+     * @param status 状态码
+     * @param message 消息
+     */
     public BusinessException(int status,String message) {
         super(message);
         this.status = status;
@@ -33,11 +41,20 @@ public class BusinessException extends RuntimeException {
         this.status = status;
     }
 
+    /**
+     * 构造器
+     * @param status 状态码
+     * @param cause 异常
+     */
     public BusinessException(int status, Throwable cause) {
         super(cause);
         this.status = status;
     }
 
+    /**
+     * 获取状态码
+     * @return {@link Integer}
+     */
     public Integer getStatus() {
         return this.status;
     }
