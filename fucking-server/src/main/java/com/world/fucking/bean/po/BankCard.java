@@ -2,15 +2,20 @@ package com.world.fucking.bean.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * 银行卡信息.
+ *
+ * @author heisenberg
+ * @since 1.0.0
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class BankCard {
     /**
      * 银行卡id，就是卡号.

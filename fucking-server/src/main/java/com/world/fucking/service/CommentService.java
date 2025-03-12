@@ -10,13 +10,13 @@ import java.util.Map;
 
 /**
  * comment service
+ * @author Heisenberg
  */
 public interface CommentService {
     /**
      * 查询全部
      * @return {@link List<Comment>}
      * @author Heisenberg
-     * @date 2024/2/1 1:27
      */
     List<Comment> queryAll();
 
@@ -24,7 +24,6 @@ public interface CommentService {
      * 根据条件查询
      * @return {@link List<Comment>}
      * @author Heisenberg
-     * @date 2024/2/1 1:28
      */
     List<Comment> byCondition() throws ParseException;
 
@@ -33,7 +32,6 @@ public interface CommentService {
      * @param params 查询条件
      * @return {@link List<Comment>}
      * @author Heisenberg
-     * @date 2024/2/1 1:28
      */
     List<Comment> queryByCondition(Map<String, Object> params);
 
@@ -42,7 +40,6 @@ public interface CommentService {
      * @param queryCondition 查询条件
      * @return {@link IPage<Comment>}
      * @author Heisenberg
-     * @date 2024/2/1 1:24
      */
     IPage<Comment> queryByWrapper(JSONObject queryCondition);
 }

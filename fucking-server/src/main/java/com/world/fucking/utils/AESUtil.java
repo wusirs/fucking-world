@@ -16,7 +16,8 @@ import java.util.Base64;
 /**
  * AES加密工具类
  *
- * @author ACGkaka
+ * @author heisenberg
+ * @since 1.0.0
  */
 @SuppressWarnings("all")
 public class AESUtil {
@@ -41,17 +42,18 @@ public class AESUtil {
 
     /**
      * AES加密
+     *
      * @param content 待加密内容
      * @param aesKey  密码
      * @return {@link String}
      */
-    public static String encrypt(String content, String aesKey){
-        if(StringUtils.isBlank(content)){
+    public static String encrypt(String content, String aesKey) {
+        if (StringUtils.isBlank(content)) {
             LOGGER.info("AES encrypt: the content is null!");
             return null;
         }
         //判断秘钥是否为16位
-        if(StringUtils.isNotBlank(aesKey)){
+        if (StringUtils.isNotBlank(aesKey)) {
             try {
                 //对密码进行编码
 //                byte[] bytes = aesKey.getBytes(ENCODING);
@@ -71,7 +73,7 @@ public class AESUtil {
                 LOGGER.error("AES encrypt exception:", e);
             }
 
-        }else {
+        } else {
             LOGGER.info("AES encrypt: the aesKey is null or error!");
             return null;
         }
@@ -85,13 +87,13 @@ public class AESUtil {
      * @param aesKey  密码
      * @return {@link String}
      */
-    public static String decrypt(String content, String aesKey){
-        if(StringUtils.isBlank(content)){
+    public static String decrypt(String content, String aesKey) {
+        if (StringUtils.isBlank(content)) {
             LOGGER.info("AES decrypt: the content is null!");
             return null;
         }
         //判断秘钥是否为16位
-        if(StringUtils.isNotBlank(aesKey) ){
+        if (StringUtils.isNotBlank(aesKey)) {
             try {
                 //对密码进行编码
 //                byte[] bytes = aesKey.getBytes("ISO-8859-1");
@@ -117,7 +119,7 @@ public class AESUtil {
                 throw new IllegalStateException(e);
             }
 
-        }else {
+        } else {
             LOGGER.info("AES decrypt: the aesKey is null or error!");
             return null;
         }
@@ -131,12 +133,12 @@ public class AESUtil {
      * @return {@link String}
      */
     public static String encryptCBC(String content, String aesKey) {
-        if(StringUtils.isBlank(content)){
+        if (StringUtils.isBlank(content)) {
             LOGGER.info("AES_CBC encrypt: the content is null!");
             return null;
         }
         //判断秘钥是否为16位
-        if(StringUtils.isNotBlank(aesKey) && aesKey.length() == 16){
+        if (StringUtils.isNotBlank(aesKey) && aesKey.length() == 16) {
             try {
                 //对密码进行编码
                 byte[] bytes = aesKey.getBytes(StandardCharsets.UTF_8);
@@ -155,7 +157,7 @@ public class AESUtil {
             } catch (Exception e) {
                 throw new IllegalStateException(e);
             }
-        }else {
+        } else {
             LOGGER.info("AES_CBC encrypt: the aesKey is null or error!");
             return null;
         }
@@ -169,12 +171,12 @@ public class AESUtil {
      * @return {@link String}
      */
     public static String decryptCBC(String content, String aesKey) {
-        if(StringUtils.isBlank(content)){
+        if (StringUtils.isBlank(content)) {
             LOGGER.info("AES_CBC decrypt: the content is null!");
             return null;
         }
         //判断秘钥是否为16位
-        if(StringUtils.isNotBlank(aesKey) && aesKey.length() == 16){
+        if (StringUtils.isNotBlank(aesKey) && aesKey.length() == 16) {
             try {
                 //对密码进行编码
                 byte[] bytes = aesKey.getBytes(StandardCharsets.UTF_8);
@@ -197,7 +199,7 @@ public class AESUtil {
             } catch (Exception e) {
                 throw new IllegalArgumentException(e);
             }
-        }else {
+        } else {
             LOGGER.info("AES_CBC decrypt: the aesKey is null or error!");
             return null;
         }
@@ -210,12 +212,12 @@ public class AESUtil {
 
         String random = RandomStringUtils.random(16, "abcdefghijklmnopqrstuvwxyz1234567890");
         LOGGER.info("random: {}", random);
-        random  = "sQPoC/1do9BZMkg8I5c09A==";
+        random = "sQPoC/1do9BZMkg8I5c09A==";
         String aesResult = "iTgNXRqU80YZ52+iV7Ew2w==";
         LOGGER.info("aesResult: {}", aesResult);
 
         LOGGER.info("随机key:{}", random);
-        LOGGER.info("length:{}",Base64.getDecoder().decode(random).length);
+        LOGGER.info("length:{}", Base64.getDecoder().decode(random).length);
         byte[] a1 = "abc".getBytes(StandardCharsets.UTF_8);
         LOGGER.info("abc byte: {}", a1);
 
