@@ -11,6 +11,6 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 // 只设置需要跨域访问的ip，设置 "*" 可以允许所有ip访问
                 .allowedOrigins("http://127.0.0.1:8081")
-                .allowedMethods("*");
+                .allowedMethods("GET", "POST", "OPTIONS");
     }
 }
