@@ -7,7 +7,6 @@ import com.world.fucking.service.CommentService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +22,6 @@ import java.util.Map;
  * @since 1.0.0
  */
 @RestController
-@CrossOrigin
 public class CommentController {
     /**
      * 评论服务
