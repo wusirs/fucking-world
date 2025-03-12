@@ -1,7 +1,7 @@
 package com.world.fucking.common;
 
 /**
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
 
  */

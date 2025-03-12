@@ -5,7 +5,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
  * @date 2024-03-18 18:14:14
  */

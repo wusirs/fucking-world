@@ -31,32 +31,34 @@ public class PDFUtil {
      * @param path        图片路径
      */
     public static void drawWater(PdfContentByte contentByte, String path, boolean textWaterFull) throws DocumentException, IOException {
-        File file = new File(path);
-        if (!file.exists()) {
-            throw new IOException("文件不存在！");
+        if (textWaterFull) {
+            File file = new File(path);
+            if (!file.exists()) {
+                throw new IOException("文件不存在！");
+            }
+            contentByte.beginText();
+            PdfGState pdfGState = new PdfGState();
+
+            // 设置不透明度
+            pdfGState.setFillOpacity(0.2F);
+            // 设置透明度
+            contentByte.setGState(pdfGState);
+
+            // 设置对齐方式 内容，坐标 旋转角度
+            Image image = Image.getInstance(path);
+            // 设置大小为200，居中对齐
+            float weight = 200F;
+            float height = 200F;
+            image.scaleAbsolute(weight, height);
+
+            image.setAbsolutePosition((RECTANGLE.getWidth() - weight) / 2, (RECTANGLE.getHeight() - height) / 2);
+            contentByte.addImage(image);
+            // 水印颜色
+            contentByte.setColorFill(BaseColor.GRAY);
+            // 关闭
+            contentByte.endText();
+            contentByte.stroke();
         }
-        contentByte.beginText();
-        PdfGState pdfGState = new PdfGState();
-
-        // 设置不透明度
-        pdfGState.setFillOpacity(0.2F);
-        // 设置透明度
-        contentByte.setGState(pdfGState);
-
-        // 设置对齐方式 内容，坐标 旋转角度
-        Image image = Image.getInstance(path);
-        // 设置大小为200，居中对齐
-        float weight = 200F;
-        float height = 200F;
-        image.scaleAbsolute(weight, height);
-
-        image.setAbsolutePosition((RECTANGLE.getWidth() - weight) / 2, (RECTANGLE.getHeight() - height) / 2);
-        contentByte.addImage(image);
-        // 水印颜色
-        contentByte.setColorFill(BaseColor.GRAY);
-        // 关闭
-        contentByte.endText();
-        contentByte.stroke();
     }
 
     public static void drawWater(PdfContentByte contentByte, String path) throws DocumentException, IOException {
@@ -65,23 +67,21 @@ public class PDFUtil {
 
     /**
      * @param contentByte content
-     * @param width Width of the rectangle
-     * @param height Height of the rectangle
-     * @param positionX X-coordinate of the lower-left corner
-     * @param positionY Y-coordinate of the lower-left corner
-     * @param color Color of teh rectangle
+     * @param width       Width of the rectangle
+     * @param height      Height of the rectangle
+     * @param positionX   X-coordinate of the lower-left corner
+     * @param positionY   Y-coordinate of the lower-left corner
+     * @param color       Color of teh rectangle
      */
     public static void drawRectangle(PdfContentByte contentByte, float width, float height,
                                      float positionX, float positionY, BaseColor color) {
-//        contentByte.beginText();
         if (Objects.isNull(color)) {
             contentByte.setColorFill(BaseColor.BLACK);
-        }else {
+        } else {
             contentByte.setColorFill(color);
         }
         // Draw the rectangle
         contentByte.rectangle(positionX, positionY, width, height);
-//        contentByte.endText();
         contentByte.stroke();
     }
 

@@ -9,7 +9,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
  */
 @Slf4j
@@ -33,9 +33,6 @@ public class SocketInboundHandler extends ChannelInboundHandlerAdapter {
                 client.writeAndFlush(data);
             }
         }
-
-        //无需在流水线继续传递
-        //super.channelRead(ctx, msg);
     }
 
     /**

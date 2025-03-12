@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
 /**
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
  */
 @Data
@@ -31,7 +31,7 @@ public class Result<T>{
      *
      * @param data 返回值
      * @return {@link Result<T>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static <T> Result<T> success(@NonNull T data){
@@ -43,7 +43,7 @@ public class Result<T>{
      * @param message 返回信息
      * @param data 返回值
      * @return {@link Result<T>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static <T> Result<T> success(@NonNull String message, @NonNull T data){
@@ -53,7 +53,7 @@ public class Result<T>{
     /**
      * 调用失败
      * @return {@link Result<Object>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static Result<Object> failed(){
@@ -64,7 +64,7 @@ public class Result<T>{
      *
      * @param message 返回消息
      * @return {@link Result<Object>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static  Result<Object> failed(@NonNull String message){
@@ -75,7 +75,7 @@ public class Result<T>{
      *
      * @param errorResult 失败的结果
      * @return {@link Result<Object>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static Result<Object> failed(@NonNull IResult errorResult){
@@ -87,7 +87,7 @@ public class Result<T>{
      * @param code 状态码
      * @param message 返回消息
      * @return {@link Result<Object>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static Result<Object> failed(@NonNull Integer code, @NonNull String message){
@@ -100,7 +100,7 @@ public class Result<T>{
      * @param message 返回消息
      * @param data 返回值
      * @return {@link Result<T>}
-     * @author Heisenberg
+     * @author heisenberg
 
      */
     public static <T> Result<T> instance(Integer code, String message, T data){

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * 在类和方法上使用该注解，不会在ResponseResult类中进一步封装返回值，直接返回原生值
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
  */
 @Target({ElementType.METHOD, ElementType.TYPE})

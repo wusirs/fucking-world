@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import java.util.Objects;
 
 /**
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
  */
 @RestControllerAdvice

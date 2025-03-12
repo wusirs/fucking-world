@@ -22,7 +22,7 @@ public interface CityCodeService extends IService<CityCode> {
      *
      * @param cityId 城市id
      * @return {@link CityCode}
-     * @author Heisenberg
+     * @author heisenberg
      * @date 2024/6/16 15:08
      */
     CityCode queryById(String cityId);

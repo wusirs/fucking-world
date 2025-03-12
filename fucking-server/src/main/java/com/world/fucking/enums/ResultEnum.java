@@ -2,7 +2,7 @@ package com.world.fucking.enums;
 
 /**
  *
- * @author Heisenberg
+ * @author heisenberg
 
  * @since 1.0.0
  */

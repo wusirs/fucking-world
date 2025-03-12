@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Heisenberg
+ * @author heisenberg
  * @since 1.0.0
  */
 @Slf4j
@@ -25,8 +25,9 @@ public class ServerStarter implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         try{
             new SocketServer(port, bossThreads, workerThreads);
-        }catch (Exception e){
-            log.info("服务端启动异常：{}", e.getMessage(), e);
+        }catch (InterruptedException e){
+            log.error("服务端启动异常：", e);
+            Thread.currentThread().interrupt();
         }
     }
 }

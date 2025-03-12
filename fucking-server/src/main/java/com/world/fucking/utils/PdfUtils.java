@@ -1,7 +1,6 @@
 package com.world.fucking.utils;
 
-import cn.hutool.core.util.StrUtil;
-import com.world.fucking.domain.User;
+import cn.hutool.core.text.CharSequenceUtil;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -19,6 +18,7 @@ import com.itextpdf.text.pdf.PdfGState;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.world.fucking.domain.User;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +28,12 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
 
+/**
+ * pdf 工具类
+ *
+ * @author heisenberg
+ * @since 1.0.0
+ */
 @Slf4j
 public class PdfUtils {
 
@@ -39,7 +45,11 @@ public class PdfUtils {
     /**
      * 纸张大小
      */
-    private static Rectangle RECTANGLE = PageSize.A4;
+    private static Rectangle rectangle = PageSize.A4;
+
+    private PdfUtils() {
+        throw new IllegalStateException();
+    }
 
     /**
      * 设置字体默认值
@@ -125,14 +135,14 @@ public class PdfUtils {
         }
 
         // 设置大小
-        RECTANGLE = PageSize.A4;
-        return new Document(RECTANGLE, 50, 50, 80, 50);
+        rectangle = PageSize.A4;
+        return new Document(rectangle, 50, 50, 80, 50);
     }
 
     /**
      * 绘制标题
      *
-     * @param font     字体
+     * @param font      字体
      * @param titleName 标题名称
      * @return {@link Paragraph
      */
@@ -153,9 +163,9 @@ public class PdfUtils {
      * 设置表格内容
      *
      * @param headFont 表头字体
-     * @param textFont  正文字体
-     * @param title   表头
-     * @param list   数据
+     * @param textFont 正文字体
+     * @param title    表头
+     * @param list     数据
      * @return {@link PdfPTable}
      */
     public static PdfPTable setTable(Font headFont, Font textFont, String[] title, List<User> list) {
@@ -178,7 +188,7 @@ public class PdfUtils {
         PdfPTable table = new PdfPTable(widths);
         try {
             // 设置表格大小
-            table.setTotalWidth(RECTANGLE.getWidth() - 100);
+            table.setTotalWidth(rectangle.getWidth() - 100);
 
             table.setLockedWidth(true);
             // 居中
@@ -201,12 +211,7 @@ public class PdfUtils {
         if (args.length == 0) {
             return cell;
         }
-//        if (args[0]) {
-//            cell.setBorderWidthLeft(0);
-//        }
-//        if (args[1]) {
-//            cell.setBorderWidthRight(0);
-//        }
+
         cell.setBorderWidthLeft(0);
         cell.setBorderWidthRight(0);
         return cell;
@@ -237,7 +242,7 @@ public class PdfUtils {
         float newWidth = 200f;
         float newHeight = 200f;
         img.scaleAbsolute(newWidth, newHeight);
-        img.setAbsolutePosition((RECTANGLE.getWidth() - newWidth) / 2, (RECTANGLE.getHeight() - newHeight) / 2);
+        img.setAbsolutePosition((rectangle.getWidth() - newWidth) / 2, (rectangle.getHeight() - newHeight) / 2);
 
         waterMar.addImage(img);
         // 水印颜色
@@ -254,10 +259,10 @@ public class PdfUtils {
      * @param waterMar pdf
      * @param text     水印文本
      * @param full     是否平铺
-     * @throws Exception    异常
+     * @throws Exception 异常
      */
     public static void addWater(PdfContentByte waterMar, String text, boolean full) throws Exception {
-        if (StrUtil.isEmpty(text)) {
+        if (CharSequenceUtil.isEmpty(text)) {
             return;
         }
         waterMar.beginText();
@@ -270,13 +275,13 @@ public class PdfUtils {
         waterMar.setGState(gs);
         if (full) {
             // 设置对齐方式 内容 X坐标 Y坐标 旋转角度 '/6'目的是为了让宽存在6个水印
-            for (int x = 50; x <= RECTANGLE.getWidth(); x += RECTANGLE.getWidth() / 4) {
-                for (int y = 50; y <= RECTANGLE.getHeight(); y += RECTANGLE.getHeight() / 4) {
+            for (int x = 50; x <= rectangle.getWidth(); x += rectangle.getWidth() / 4) {
+                for (int y = 50; y <= rectangle.getHeight(); y += rectangle.getHeight() / 4) {
                     waterMar.showTextAligned(Element.ALIGN_RIGHT, text, x, y, 45);
                 }
             }
         } else {
-            waterMar.showTextAligned(Element.ALIGN_RIGHT, text, (RECTANGLE.getWidth()) / 2, (RECTANGLE.getHeight()) / 2, 45);
+            waterMar.showTextAligned(Element.ALIGN_RIGHT, text, (rectangle.getWidth()) / 2, (rectangle.getHeight()) / 2, 45);
         }
         // 水印颜色
         waterMar.setColorFill(BaseColor.GRAY);
@@ -289,16 +294,16 @@ public class PdfUtils {
     /**
      * 添加图片
      *
-     * @param document pdf
-     * @param imgPath 图片路径
-     * @param newWidth 宽
+     * @param document  pdf
+     * @param imgPath   图片路径
+     * @param newWidth  宽
      * @param newHeight 高
-     * @throws IOException io异常
+     * @throws IOException       io异常
      * @throws DocumentException 异常
      */
     public static void addImg(Document document, String imgPath, float newWidth, float newHeight) throws IOException, DocumentException {
         Image img1 = Image.getInstance(imgPath);
-        img1.setAbsolutePosition(50, RECTANGLE.getHeight() - 60);
+        img1.setAbsolutePosition(50, rectangle.getHeight() - 60);
         img1.scaleAbsolute(newWidth, newHeight);
         document.add(img1);
     }
@@ -308,25 +313,25 @@ public class PdfUtils {
      * 生成页眉
      *
      * @param pdfWriter writer
-     * @param text     文本
+     * @param text      文本
      */
     public static void addHeader(PdfWriter pdfWriter, String text) {
         ColumnText.showTextAligned(pdfWriter.getDirectContent(),
                 Element.ALIGN_LEFT, new Paragraph(text, PdfUtils.setFont(10, BaseColor.GRAY)),
-                50, RECTANGLE.getHeight() - 12, 0);
+                50, rectangle.getHeight() - 12, 0);
     }
 
     /**
      * 生成页码
      *
      * @param pdfWriter writer
-     * @param document document
+     * @param document  document
      */
     public static void addPageNum(PdfWriter pdfWriter, Document document) {
         try {
             //创建一个两列的表格
             PdfPTable table = new PdfPTable(1);
-            table.setTotalWidth(RECTANGLE.getWidth());
+            table.setTotalWidth(rectangle.getWidth());
             //锁定列宽
             table.setLockedWidth(true);
             //设置每列宽度
