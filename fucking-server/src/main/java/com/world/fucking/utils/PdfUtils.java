@@ -51,10 +51,10 @@ public class PdfUtils {
             fontPath = Paths.get(windowsDir, "Fonts").toString();
         } else if (osName.contains("mac")) {
             // macOS系统 /Library/Fonts
-            fontPath = Paths.get("/Library", "Fonts").toString();
+            fontPath = Paths.get(File.separator,"Library", "Fonts").toString();
         } else if (osName.contains("nix") || osName.contains("nux")) {
             // Linux系统 /usr/share/fonts
-            fontPath = Paths.get("/usr", "share", "fonts").toString();
+            fontPath = Paths.get(File.separator, "usr", "share", "fonts").toString();
         }
     }
 
