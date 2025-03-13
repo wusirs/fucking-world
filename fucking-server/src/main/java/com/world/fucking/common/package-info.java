@@ -1,6 +1,6 @@
 /**
- * 转发
+ * 公共类
  * @author heisenberg
  * @since 1.0.0
  */
-package com.world.fucking.feign;
+package com.world.fucking.common;

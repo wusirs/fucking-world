@@ -5,9 +5,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 /**
+ * 缓存预热
  * @author heisenberg
  * @since 1.0.0
- * @date 2024-03-18 18:14:14
  */
 @Component
 public class RedisCacheWarmer implements ApplicationListener<ContextRefreshedEvent> {

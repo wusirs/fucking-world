@@ -1,5 +1,5 @@
 /**
- * Mapper包
+ * 持久层
  * @author heisenberg
  * @since 1.0.0
  */
