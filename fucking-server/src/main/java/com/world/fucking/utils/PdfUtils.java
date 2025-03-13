@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -38,9 +39,24 @@ import java.util.List;
 public class PdfUtils {
 
     /**
-     * 字体存放的跟路径，默认为'C:\Windows\Fonts\'
+     * 字体存放的跟路径
      */
-    private static final String FONT_PATH = "C:\\Windows\\Fonts\\";
+    private static String fontPath;
+
+    static {
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("win")) {
+            // Windows系统 'C:\Windows\Fonts\'
+            String windowsDir = System.getenv("SystemRoot");
+            fontPath = Paths.get(windowsDir, "Fonts").toString();
+        } else if (osName.contains("mac")) {
+            // macOS系统 /Library/Fonts
+            fontPath = Paths.get("/Library", "Fonts").toString();
+        } else if (osName.contains("nix") || osName.contains("nux")) {
+            // Linux系统 /usr/share/fonts
+            fontPath = Paths.get("/usr", "share", "fonts").toString();
+        }
+    }
 
     /**
      * 纸张大小
@@ -69,7 +85,7 @@ public class PdfUtils {
             // ttc格式的字体需要加上后缀
             fontName = fontName + ",0";
         }
-        String font = FONT_PATH + fontName;
+        String font = fontPath + fontName;
         return BaseFont.createFont(font, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
     }
 
