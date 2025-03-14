@@ -12,7 +12,7 @@ public @interface RequestLockAnnotation {
 
     /**
      * 期望时间 单位毫秒
-     * @return int
+     * @return {@link int}
      */
     int expireTime() default 0;
 }

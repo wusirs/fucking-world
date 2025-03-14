@@ -15,12 +15,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import java.util.Objects;
 
 /**
+ * 请求结果处理
  * @author heisenberg
  * @since 1.0.0
  */
 @RestControllerAdvice
 public class ResponseResult implements ResponseBodyAdvice<Object> {
 
+    /**
+     * 判断是否走 beforeBodyWrite 方法
+     * @param returnType 返回值类型
+     * @param aClass .
+     * @return {@link boolean}
+     */
     @Override
     public boolean supports(MethodParameter returnType, @NonNull Class<? extends HttpMessageConverter<?>> aClass) {
         if (returnType.getDeclaringClass().isAnnotationPresent(ResponseNotIntercept.class)) {
@@ -31,6 +38,16 @@ public class ResponseResult implements ResponseBodyAdvice<Object> {
         return !Objects.requireNonNull(returnType.getMethod()).isAnnotationPresent(ResponseNotIntercept.class);
     }
 
+    /**
+     * 包装返回值
+     * @param body 返回值
+     * @param returnType 返回值类型
+     * @param selectedContentType 媒体类型
+     * @param selectedConverterType .
+     * @param request req
+     * @param response res
+     * @return {@link Object}
+     */
     @Override
     public Object beforeBodyWrite(Object body, @NonNull MethodParameter returnType, @NonNull MediaType selectedContentType,
                                   @NonNull Class<? extends HttpMessageConverter<?>> selectedConverterType,
