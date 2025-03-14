@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 城市编码
- * @author Ciao
+ * @author heisenberg
  * @since 1.0.0
  */
 @RestController
@@ -38,7 +38,7 @@ public class CityCodeController {
     /**
      *
      * @param cityCodeList 城市编码集合
-     * @author Ciao
+     * @author heisenberg
      */
     @ApiOperation("批量保存城市编码")
     @PostMapping("/saveCityCode")
@@ -48,7 +48,7 @@ public class CityCodeController {
 
     /**
      * @param cityCode 城市编码
-     * @author Ciao
+     * @author heisenberg
      */
     @ApiOperation("修改城市编码")
     @PostMapping("/updateCityCode")
@@ -60,7 +60,7 @@ public class CityCodeController {
      *
      * @param cityId 城市id
      * @return {@link CityCode}
-     * @author Ciao
+     * @author heisenberg
      */
     @ApiOperation("查询详情")
     @PostMapping("/queryById")

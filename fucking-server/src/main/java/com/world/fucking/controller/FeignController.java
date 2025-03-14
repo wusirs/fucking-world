@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * feign 调用接口
- * @author Ciao
+ * @author heisenberg
  */
 @RestController
 @RequestMapping("/feign")

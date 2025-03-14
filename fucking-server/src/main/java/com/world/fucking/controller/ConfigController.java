@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * config 查询
- * @author Ciao
+ * @author heisenberg
  */
 @RestController
 @RequestMapping("/config")
