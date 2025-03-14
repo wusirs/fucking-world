@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
  *
  * @author heisenberg
  * @since 1.0.0
-
  */
 @RestControllerAdvice
 @Slf4j
@@ -35,16 +34,22 @@ public class CommonExceptionHandler {
 
     /**
      * 捕获 自定 异常
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler({BusinessException.class})
     public Result<Object> handleBusinessException(BusinessException ex) {
         log.error(ex.getMessage(), ex);
-        return Result.failed(ex.getStatus(),ex.getMessage());
+        return Result.failed(ex.getStatus(), ex.getMessage());
     }
 
     /**
      * 参数缺失异常
      * 说明：参数为必填时，若入参中无此参数则会报MissingServletRequestParameterException
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler({MissingServletRequestParameterException.class})
     public Result<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
@@ -54,6 +59,9 @@ public class CommonExceptionHandler {
 
     /**
      * 参数值校验异常
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      * {@code @PathVariable} 和 {@code @RequestParam} 参数值校验不通过时抛出的异常处理
      */
     @ExceptionHandler({ConstraintViolationException.class})
@@ -65,6 +73,9 @@ public class CommonExceptionHandler {
     /**
      * 参数值类型异常
      * 说明: 定义Integer类型，输入的为String，会出现 MethodArgumentTypeMismatchException异常
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public Result<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
@@ -75,6 +86,9 @@ public class CommonExceptionHandler {
 
     /**
      * {@code @RequestBody} 参数校验不通过时抛出的异常处理
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public Result<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
@@ -85,6 +99,10 @@ public class CommonExceptionHandler {
         return Result.failed(ResultEnum.VALIDATE_FAILED.getCode(), msg);
     }
 
+    /**
+     * @param ex 异常
+     * @return {@link Result<Object>}
+     */
     @ExceptionHandler(BindException.class)
     public Result<Object> handleBindException(BindException ex) {
         log.error(ex.getMessage(), ex);
@@ -97,6 +115,9 @@ public class CommonExceptionHandler {
 
     /**
      * 捕获 {@code ForbiddenException} 异常
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler({ForbiddenException.class})
     public Result<Object> handleForbiddenException(ForbiddenException ex) {
@@ -107,6 +128,9 @@ public class CommonExceptionHandler {
 
     /**
      * 顶级异常捕获并统一处理，当其他异常无法处理时候选择使用
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler({Exception.class})
     public Result<Object> handle(Exception ex) {
@@ -116,6 +140,9 @@ public class CommonExceptionHandler {
 
     /**
      * 处理已知的系统异常
+     *
+     * @param ex 异常
+     * @return {@link Result<Object>}
      */
     @ExceptionHandler({ServletException.class})
     public Result<Object> handle1(Exception ex) {
