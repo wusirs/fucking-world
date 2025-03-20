@@ -13,17 +13,16 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
-@TableName("blbl.user_comment")
+@TableName("fucking_world.fucking_user_comment")
 @ApiModel("评论实体类")
 public class Comment {
     @JsonFormat(pattern = "cid")
     @JsonProperty("cid")
     @JsonAlias("cid")
-//    @TableField(value = "cid")
     @TableId(value = "cid")
     @ApiModelProperty("主键")
     @NotNull
-    private Integer cId;
+    private Integer fuckingId;
 
     @ApiModelProperty(value = "prevComment", dataType = "integer")
     private Integer prevComment;

@@ -5,7 +5,7 @@
 
 <mapper namespace="com.world.fucking.mapper.CommentMapper">
     <resultMap id="comment" type="com.world.fucking.domain.Comment">
-        <result column="cid" property="cId" javaType="int"/>
+        <result column="cid" property="fuckingId" javaType="int"/>
         <result column="prev_comment" property="prevComment" javaType="int"/>
         <result column="user_id" property="userId" javaType="int"/>
         <result column="relate_comment" property="relateComment" javaType="int"/>
@@ -15,8 +15,8 @@
     </resultMap>
 
     <sql id="columns">
-        select cid, prev_comment, user_id, relate_comment, content, video_id
-        from USER_COMMENT
+        select fucking_id, prev_comment, user_id, relate_comment, content, video_id
+        from fucking_user_comment
     </sql>
 
     <select id="queryAll" resultMap="comment">
