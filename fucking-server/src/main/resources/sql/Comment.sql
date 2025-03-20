@@ -1,6 +1,6 @@
-USE blbl;
-DROP TABLE IF EXISTS T_fucking_user_comment;
-CREATE TABLE T_fucking_user_comment(
+USE fucking_world;
+DROP TABLE IF EXISTS fucking_user_comment;
+CREATE TABLE fucking_user_comment(
     CID INT NOT NULL PRIMARY KEY ,
     PREV_COMMENT INT,
     USER_ID INT,
