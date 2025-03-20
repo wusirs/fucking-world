@@ -14,18 +14,18 @@
         <result column="comment_time" property="commentTime" javaType="date"/>
     </resultMap>
 
-    <sql id="columns">
+    <sql id="baseSql">
         select fucking_id, prev_comment, user_id, relate_comment, content, video_id
         from fucking_user_comment
     </sql>
 
     <select id="queryAll" resultMap="comment">
-        <include refid="columns"/>
+        <include refid="baseSql"/>
     </select>
 
 
     <select id="queryByCondition" parameterType="map" resultMap="comment">
-        <include refid="columns"/>
+        <include refid="baseSql"/>
         <where>
             <if test="videos != null and videos.size() > 0">
                 AND video_id in
