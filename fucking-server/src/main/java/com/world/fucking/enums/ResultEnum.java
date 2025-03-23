@@ -11,7 +11,8 @@ public enum ResultEnum implements IResult{
     VALIDATE_FAILED(400, "参数错误"),
     COMMON_FAILED(500, "系统错误"),
 
-    FORBIDDEN(2004, "没有权限访问资源")
+    FORBIDDEN(2004, "没有权限访问资源"),
+    TIME_EXCEPTION(3001, "时钟回拨，拒绝生成ID")
     ;
     private Integer code;
     private String message;

@@ -16,6 +16,7 @@ import java.util.Objects;
 
 /**
  * 请求结果处理
+ *
  * @author heisenberg
  * @since 1.0.0
  */
@@ -24,8 +25,9 @@ public class ResponseResult implements ResponseBodyAdvice<Object> {
 
     /**
      * 判断是否走 beforeBodyWrite 方法
+     *
      * @param returnType 返回值类型
-     * @param aClass .
+     * @param aClass     .
      * @return {@link boolean}
      */
     @Override
@@ -40,12 +42,13 @@ public class ResponseResult implements ResponseBodyAdvice<Object> {
 
     /**
      * 包装返回值
-     * @param body 返回值
-     * @param returnType 返回值类型
-     * @param selectedContentType 媒体类型
+     *
+     * @param body                  返回值
+     * @param returnType            返回值类型
+     * @param selectedContentType   媒体类型
      * @param selectedConverterType .
-     * @param request req
-     * @param response res
+     * @param request               req
+     * @param response              res
      * @return {@link Object}
      */
     @Override

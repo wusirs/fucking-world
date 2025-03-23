@@ -1,5 +1,6 @@
 package com.world.fucking.exception;
 
+import com.world.fucking.enums.ResultEnum;
 import lombok.Getter;
 
 /**
@@ -36,6 +37,15 @@ public class BusinessException extends RuntimeException {
     public BusinessException(int status,String message) {
         super(message);
         this.status = status;
+    }
+
+    /**
+     * 有参构造
+     * @param resultEnum 状态码
+     */
+    public BusinessException(ResultEnum resultEnum) {
+        super(resultEnum.getMessage());
+        this.status = resultEnum.getCode();
     }
 
     /**
