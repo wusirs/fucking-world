@@ -4,6 +4,11 @@ import com.world.fucking.exception.BusinessException;
 
 import static com.world.fucking.enums.ResultEnum.TIME_EXCEPTION;
 
+/**
+ * 雪花算法 生成uuid
+ * @author heisenberg
+ * @since 1.0.0
+ */
 public class SnowflakeIdGenerator {
     private static final long EPOCH = 1609459200000L; // 起始时间戳（2021-01-01）
     private static final long WORKER_ID_BITS = 5L;      // 机器ID占5位

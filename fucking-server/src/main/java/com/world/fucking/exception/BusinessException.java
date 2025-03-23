@@ -13,9 +13,6 @@ public class BusinessException extends RuntimeException {
      * 异常状态码信息
      * -- GETTER --
      *  获取状态码
-     *
-     * @return {@link Integer}
-
      */
     private final Integer status;
 
