@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
 import com.world.fucking.common.RedisCommonConst;
 import com.world.fucking.domain.CityCode;
 import com.world.fucking.mapper.CityCodeMapper;
@@ -19,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Service
 public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> implements CityCodeService {
@@ -48,7 +48,7 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
             rLock.lock();
             redisUtil.del("cityCode");
             return super.updateById(entity);
-        }  finally {
+        } finally {
             rLock.unlock();
         }
     }
@@ -68,8 +68,22 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
             CityCode cityCode = super.getById(cityId);
             redisUtil.set(cityCodeKey, cityCode);
             return cityCode;
-        }finally {
+        } finally {
             rLock.unlock();
         }
+    }
+
+    @Override
+    public IPage<CityCode> listCityCode(Map<String, String> parameter) {
+        QueryWrapper<CityCode> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(!parameter.get("province").isEmpty(), CityCode::getProvince, parameter.get("province"))
+                .eq(!parameter.get("area").isEmpty(), CityCode::getAreaCode, parameter.get("area"))
+                .and(!parameter.get("name").isEmpty(), wrapper -> wrapper.like(
+                        CityCode::getCity, parameter.get("name")
+                ).or().like(
+                        CityCode::getArea, parameter.get("name")
+                ));
+        Page<CityCode> page = new Page<>(1, 10);
+        return cityCodeMapper.selectPage(page, queryWrapper);
     }
 }

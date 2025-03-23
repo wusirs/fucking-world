@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.world.fucking.domain.CityCode;
 
+import java.util.Map;
+
 
 /**
  * 邮政编码service
  * @author heisenberg
- * @date 2024/02/19
  * @since 1.0.0
  */
 public interface CityCodeService extends IService<CityCode> {
@@ -23,7 +24,13 @@ public interface CityCodeService extends IService<CityCode> {
      * @param cityId 城市id
      * @return {@link CityCode}
      * @author heisenberg
-     * @date 2024/6/16 15:08
      */
     CityCode queryById(String cityId);
+
+    /**
+     * 条件筛选城市编码
+     * @param parameter 过滤条件
+     * @return {@link  IPage<CityCode>}
+     */
+    IPage<CityCode> listCityCode(Map<String, String> parameter);
 }
