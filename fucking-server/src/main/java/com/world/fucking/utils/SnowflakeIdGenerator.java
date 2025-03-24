@@ -17,11 +17,31 @@ public class SnowflakeIdGenerator {
     private static final long MAX_WORKER_ID = (1L << WORKER_ID_BITS) - 1; // 最大机器ID（31）
     private static final long MAX_DATACENTER_ID = (1L << DATACENTER_ID_BITS) - 1; // 最大数据中心ID（31）
 
+    /**
+     * 机械id
+     */
     private final long workerId;
+
+    /**
+     * 数据中心 id
+     */
     private final long datacenterId;
+
+    /**
+     * 序号
+     */
     private long sequence = 0L;
+
+    /**
+     * 最后一次生成的id的时间戳
+     */
     private long lastTimestamp = -1L;
 
+    /**
+     * 构造方法
+     * @param workerId 机械id
+     * @param datacenterId 分布式服务注册中心id
+     */
     public SnowflakeIdGenerator(long workerId, long datacenterId) {
         if (workerId > MAX_WORKER_ID || workerId < 0) {
             throw new IllegalArgumentException("Worker ID超出范围");
@@ -33,6 +53,10 @@ public class SnowflakeIdGenerator {
         this.datacenterId = datacenterId;
     }
 
+    /**
+     *  生成 uuid
+     * @return {@link long}
+     */
     public synchronized long nextId() {
         long timestamp = System.currentTimeMillis();
         if (timestamp < lastTimestamp) {
@@ -53,6 +77,11 @@ public class SnowflakeIdGenerator {
                 | sequence;
     }
 
+    /**
+     * 阻塞到下一毫秒
+     * @param lastTimestamp 最后一次生成id时间戳
+     * @return {@link long}
+     */
     private long waitForNextMillis(long lastTimestamp) {
         long timestamp = System.currentTimeMillis();
         while (timestamp <= lastTimestamp) {
