@@ -10,7 +10,6 @@ public class RedisCommonConst {
 
     /**
      * redis city_code key
-
      */
     public static final String CITY_CODE_PRE_KEY = "cityCode";
 }

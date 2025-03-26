@@ -1,11 +1,5 @@
 package com.world.fucking.common;
 
-/**
- * @author heisenberg
- * @since 1.0.0
-
- */
-
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;

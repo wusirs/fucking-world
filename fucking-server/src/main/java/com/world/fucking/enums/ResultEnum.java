@@ -3,7 +3,6 @@ package com.world.fucking.enums;
 /**
  *
  * @author heisenberg
-
  * @since 1.0.0
  */
 public enum ResultEnum implements IResult{

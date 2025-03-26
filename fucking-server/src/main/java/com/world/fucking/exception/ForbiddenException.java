@@ -2,7 +2,6 @@ package com.world.fucking.exception;
 
 /**
  * @author heisenberg
-
  * @since 1.0.0
  */
 public class ForbiddenException extends RuntimeException{

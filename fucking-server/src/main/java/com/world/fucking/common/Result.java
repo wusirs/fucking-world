@@ -32,7 +32,6 @@ public class Result<T>{
      * @param data 返回值
      * @return {@link Result<T>}
      * @author heisenberg
-
      */
     public static <T> Result<T> success(@NonNull T data){
         return new Result<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
@@ -44,7 +43,6 @@ public class Result<T>{
      * @param data 返回值
      * @return {@link Result<T>}
      * @author heisenberg
-
      */
     public static <T> Result<T> success(@NonNull String message, @NonNull T data){
         return new Result<>(ResultEnum.SUCCESS.getCode(), message, data);
@@ -54,7 +52,6 @@ public class Result<T>{
      * 调用失败
      * @return {@link Result<Object>}
      * @author heisenberg
-
      */
     public static Result<Object> failed(){
         return new Result<>(ResultEnum.COMMON_FAILED.getCode(), ResultEnum.COMMON_FAILED.getMessage(), null);
@@ -65,7 +62,6 @@ public class Result<T>{
      * @param message 返回消息
      * @return {@link Result<Object>}
      * @author heisenberg
-
      */
     public static  Result<Object> failed(@NonNull String message){
         return new Result<>(ResultEnum.COMMON_FAILED.getCode(), message, null);
@@ -76,7 +72,6 @@ public class Result<T>{
      * @param errorResult 失败的结果
      * @return {@link Result<Object>}
      * @author heisenberg
-
      */
     public static Result<Object> failed(@NonNull IResult errorResult){
         return new Result<>(errorResult.getCode(), errorResult.getMessage(), null);
@@ -88,7 +83,6 @@ public class Result<T>{
      * @param message 返回消息
      * @return {@link Result<Object>}
      * @author heisenberg
-
      */
     public static Result<Object> failed(@NonNull Integer code, @NonNull String message){
         return new Result<>(code, message, null);
@@ -101,7 +95,6 @@ public class Result<T>{
      * @param data 返回值
      * @return {@link Result<T>}
      * @author heisenberg
-
      */
     public static <T> Result<T> instance(Integer code, String message, T data){
         Result<T> result = new Result<>();

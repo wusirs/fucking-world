@@ -1,11 +1,6 @@
 package com.world.fucking.common;
 
-/**
- * @author heisenberg
- * @since 1.0.0
-
- */
-
+import com.world.fucking.exception.BusinessException;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -13,12 +8,12 @@ import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 
 /**
- * @author visy.wang
- * @description: Socket通道初始化器
+ * Socket通道初始化器
+ * @author heisenberg
  */
 public class SocketChannelInitializer extends ChannelInitializer<SocketChannel> {
     @Override
-    protected void initChannel(SocketChannel channel) throws Exception {
+    protected void initChannel(SocketChannel channel) throws BusinessException {
         ChannelPipeline pipeline = channel.pipeline();
         //添加对byte数组的编解码，是由netty提供的
         pipeline.addLast(new ByteArrayDecoder()); //入站
