@@ -1,6 +1,7 @@
 package com.world.fucking.filter;
 
 import org.apache.log4j.MDC;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 /**
  * 过滤器实现traceId 获取
+ *
  * @author heisenberg
  * @since 1.0.0
  */
@@ -18,7 +20,7 @@ public class HeaderFilter implements HandlerInterceptor {
     private static final String TRACE_HEADER = "X-Trace-ID";
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+    public boolean preHandle(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         // 获取或生成traceId（支持前端传递）
         String traceId = request.getHeader(TRACE_HEADER);
         if (traceId == null || traceId.isEmpty()) {
@@ -34,8 +36,8 @@ public class HeaderFilter implements HandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
-                                Object handler, Exception ex) {
+    public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
+                                @NonNull Object handler, Exception ex) {
         // 清理MDC防止内存泄漏[7](@ref)
         MDC.remove("traceId");
     }

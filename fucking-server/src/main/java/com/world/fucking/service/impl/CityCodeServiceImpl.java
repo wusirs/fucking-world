@@ -36,7 +36,7 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
     @Resource
     private RedisUtil redisUtil;
 
-    private CityCodeService cityCodeService;
+    private final CityCodeService cityCodeService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CityCodeServiceImpl.class);
 
