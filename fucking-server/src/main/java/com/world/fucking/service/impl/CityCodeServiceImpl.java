@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -30,6 +31,9 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
 
     @Resource
     private RedisUtil redisUtil;
+
+    @Resource
+    private CityCodeService cityCodeService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CityCodeServiceImpl.class);
 
@@ -85,5 +89,10 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
                 ));
         Page<CityCode> page = new Page<>(1, 10);
         return cityCodeMapper.selectPage(page, queryWrapper);
+    }
+
+    @Override
+    public Integer updateCityCode(List<CityCode> cityCodeList) {
+        return cityCodeService.saveOrUpdateBatch(cityCodeList) ? cityCodeList.size() : 0;
     }
 }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.world.fucking.domain.CityCode;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -33,4 +34,11 @@ public interface CityCodeService extends IService<CityCode> {
      * @return {@link  IPage<CityCode>}
      */
     IPage<CityCode> listCityCode(Map<String, String> parameter);
+
+    /**
+     * 更新编码表
+     * @param cityCodeList 列表
+     * @return {@link Integer}
+     */
+    Integer updateCityCode(List<CityCode> cityCodeList);
 }
