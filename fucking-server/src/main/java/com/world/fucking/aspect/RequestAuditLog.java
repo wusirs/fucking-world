@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class RequestAuditLog {
     private static final Logger logger = LoggerFactory.getLogger(RequestAuditLog.class);
+    public static final String REQUEST_TEXT = "请求发生: ";
 
     /**
      * 切面
@@ -36,6 +37,10 @@ public class RequestAuditLog {
         String simpleName = target.getClass().getSimpleName();
         String methodName = signature.getName();
 
-        logger.info("{}.{}：{}", simpleName, methodName, args[0]);
+        if (args.length > 0) {
+            logger.info("{}{}.{}：{}",REQUEST_TEXT, simpleName, methodName, args[0]);
+        }else {
+            logger.info("{}{}.{}", REQUEST_TEXT, simpleName, methodName);
+        }
     }
 }

@@ -10,11 +10,14 @@ import com.world.fucking.domain.CityCode;
 import com.world.fucking.mapper.CityCodeMapper;
 import com.world.fucking.service.CityCodeService;
 import com.world.fucking.utils.RedisUtil;
+import lombok.Getter;
 import org.redisson.api.RLock;
 import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Getter
 public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> implements CityCodeService {
     @Resource
     private CityCodeMapper cityCodeMapper;
@@ -32,10 +36,18 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
     @Resource
     private RedisUtil redisUtil;
 
-    @Resource
     private CityCodeService cityCodeService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CityCodeServiceImpl.class);
+
+    /**
+     * 延迟注入自身
+     * @param cityCodeService service
+     */
+    @Autowired
+    public CityCodeServiceImpl(@Lazy CityCodeServiceImpl cityCodeService){
+        this.cityCodeService = cityCodeService;
+    }
 
     @Override
     public IPage<CityCode> queryAll() {

@@ -6,6 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
+/**
+ * redis
+ * @author heisenberg
+ */
 @Configuration
 public class RedisConfig {
 
