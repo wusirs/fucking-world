@@ -1,6 +1,6 @@
 package com.world.fucking.filter;
 
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,6 +11,8 @@ import java.util.UUID;
 
 /**
  * 过滤器实现traceId 获取
+ * 注意 logback 日志要引用 org.slf4j.MDC;
+ * log4j 要引用 org.apache.log4j.MDC
  *
  * @author heisenberg
  * @since 1.0.0

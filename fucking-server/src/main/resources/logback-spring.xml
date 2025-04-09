@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="ture" scanPeriod="60 seconds" debug="false">
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
     <!--配置规则类的位置-->
     <define name="ip" class="com.world.fucking.converter.IpConverter" />
 
-    <springProperty name="service.name" scope="context" source="spring.application.name" defaultValue="fucking-world"/>
+    <springProperty name="service.name" scope="context" source="spring.application.name"
+                    defaultValue="fucking-world"/>
     <springProperty name="port" scope="context" source="server.port" defaultValue="0000"/>
-    <springProperty scope="context" name="console.log.pattern" source="logging.pattern.console" defaultValue="%red([%d{yyyy-MM-dd HH:mm:ss}])-%green([${ip}:${port}])-%green([%thread])-%highlight(%-5level)-%boldMagenta(%logger{36})-%msg%n"/>
-    <springProperty scope="context" name="log.pattern" source="logging.pattern.console" defaultValue="%d{yyyy-MM-dd HH:mm:ss}-[${ip}:${port}]-[%thread]-%-5level-%logger{36}-%msg%n"/>
+    <springProperty scope="context" name="console.log.pattern" source="logging.pattern.console"
+                    defaultValue="%red([%d{yyyy-MM-dd HH:mm:ss}])-%green([${ip}:${port}])-%green([%thread])-%highlight(%-5level)-%boldMagenta(%logger{36})-%cyan([%X{traceId}])-%msg%n"/>
+    <springProperty scope="context" name="log.pattern" source="logging.pattern.console"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss}-[${ip}:${port}]-[%thread]-%-5level-%logger{36}-[%X{traceId}]-%msg%n"/>
 
     <property name="log.path" value="/data/logs"/>
 
@@ -89,6 +92,8 @@
 
     <!-- info异步输出 -->
     <appender name="async_info" class="ch.qos.logback.classic.AsyncAppender">
+        <includeCallerData>true</includeCallerData>
+
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold>0</discardingThreshold>
         <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
@@ -99,6 +104,8 @@
 
     <!-- error异步输出 -->
     <appender name="async_error" class="ch.qos.logback.classic.AsyncAppender">
+
+        <includeCallerData>true</includeCallerData>
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold>0</discardingThreshold>
         <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
