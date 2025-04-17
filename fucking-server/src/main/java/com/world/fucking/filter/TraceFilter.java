@@ -1,6 +1,7 @@
 package com.world.fucking.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StopWatch;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -33,8 +34,10 @@ public class TraceFilter implements Filter {
         }
 
         // 2. 记录请求开始时间
-        long startTime = System.currentTimeMillis();
-        log.info("{} 请求开始: {}", traceId, startTime);
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        log.info("{} 请求开始:", traceId);
 
         // 3. 将traceId添加至响应头
         ((HttpServletResponse) response).addHeader(TRACE_HEADER, traceId);
@@ -43,8 +46,8 @@ public class TraceFilter implements Filter {
         chain.doFilter(request, response);
 
         // 5. 计算耗时并记录
-        long endTime = System.currentTimeMillis();
-        log.info("{} 请求耗时: {} ms%n", traceId, endTime - startTime);
+        stopWatch.stop();
+        log.info("{} 请求耗时: {} ms", traceId, stopWatch.getTotalTimeMillis());
     }
 
     @Override
