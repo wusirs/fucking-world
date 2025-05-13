@@ -22,8 +22,8 @@ public class FuckingWorldApplication {
         try {
             SpringApplication.run(FuckingWorldApplication.class, args);
         } catch (Exception e) {
-            log.error("ApplicationRunner执行失败", e);
-            throw new IllegalStateException("启动任务失败", e);
+            log.error("fucking fail", e);
+            throw new IllegalStateException("fucking fail", e);
         }
     }
 }
