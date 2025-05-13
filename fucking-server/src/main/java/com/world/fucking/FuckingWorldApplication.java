@@ -10,6 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * start fucking world
  * @author heisenberg
+ * @since 1.0.0
  */
 @SpringBootApplication
 @EnableDiscoveryClient
