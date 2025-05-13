@@ -8,7 +8,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * spring boot 启动类
  * @author Ciao
- * @date 2024/08/09
  */
 @SpringBootApplication
 @EnableDiscoveryClient
