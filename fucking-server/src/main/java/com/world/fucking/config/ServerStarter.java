@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class ServerStarter implements ApplicationRunner {
-    @Value("${netty.server.port}")
+    @Value("${netty.server.port:}")
     private Integer port;
-    @Value("${netty.server.bossThreads}")
+    @Value("${netty.server.bossThreads:}")
     private Integer bossThreads;
     @Value("${netty.server.workerThreads:-1}")
     private Integer workerThreads;
