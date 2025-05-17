@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
-@TableName("fucking_world.fucking_user_comment")
+@TableName("fucking.fucking_user_comment")
 @ApiModel("评论实体类")
 public class Comment {
     @JsonFormat(pattern = "cid")

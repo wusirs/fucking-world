@@ -1,4 +1,4 @@
-USE fucking_world;
+USE fucking;
 DROP TABLE IF EXISTS fucking_user_comment;
 CREATE TABLE fucking_user_comment(
     CID INT NOT NULL PRIMARY KEY ,
