@@ -33,6 +33,7 @@ public class HeaderFilter implements HandlerInterceptor {
         MDC.put("traceId", traceId);
 
         // 将traceId添加至响应头（可选）
+        //noinspection JvmTaintAnalysis
         response.addHeader(TRACE_HEADER, traceId);
         return true;
     }

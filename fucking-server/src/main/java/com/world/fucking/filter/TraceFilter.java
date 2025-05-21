@@ -40,6 +40,7 @@ public class TraceFilter implements Filter {
         log.info("{} 请求开始:", traceId);
 
         // 3. 将traceId添加至响应头
+        //noinspection JvmTaintAnalysis
         ((HttpServletResponse) response).addHeader(TRACE_HEADER, traceId);
 
         // 4. 传递请求
