@@ -12,10 +12,10 @@ spring:
     #    password: qwer1234
     #    url: jdbc:oracle:thin:@localhost:1521:orcl
     #    driver-class-name: oracle.jdbc.OracleDriver
-    username: WL
+    username: FW
     password: 1234zxcv
     # url 可以不加数据库名但是实体类的table name注解要加数据库名
-    url: jdbc:mysql://192.168.1.6:3306?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.1.2:3306?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       # 初始化大小，最小，最大
@@ -56,6 +56,9 @@ spring:
         max-wait: -1
         max-idle: 16
         min-idle: 8
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 logging:
   level:
     org:
