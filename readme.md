@@ -1,4 +1,6 @@
-# Commit
+# Fucking World
+
+## 1. Commit
 
 fix：bug 修复
 feature：新增功能
@@ -14,6 +16,7 @@ chore：构建工具的修改
 revert：回滚
 deps：第三方依赖库的修改
 community：社区相关的修改，如修改 Github Issue 模板等。
+
 **几点说明：**
 - 如在一次提交中出现多种类型，需增加多个类型。
 - 如代码重构带来了性能提升，可以同时添加 **refactor**
