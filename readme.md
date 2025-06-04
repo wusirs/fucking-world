@@ -1,6 +1,6 @@
 # Fucking World
 
-## 1. Commit
+## 1. Commit Standard
 
 fix：bug 修复
 feature：新增功能
