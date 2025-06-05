@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 /**
  * 邮政编码mapper
  * @author heisenberg
- * @date 2024/02/19
  * @since 1.0.0
  */
 @Mapper
