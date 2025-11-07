@@ -1,5 +1,6 @@
 package com.world.fucking.filter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.util.UUID;
  * @author heisenberg
  * @since 1.0.0
  */
+@Slf4j
 @Component
 public class HeaderFilter implements HandlerInterceptor {
     private static final String TRACE_HEADER = "X-Trace-ID";
@@ -24,9 +26,10 @@ public class HeaderFilter implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         // 获取或生成traceId（支持前端传递）
-        String traceId = request.getHeader(TRACE_HEADER);
+        String traceId = response.getHeader(TRACE_HEADER);
         if (traceId == null || traceId.isEmpty()) {
             traceId = UUID.randomUUID().toString().replace("-", "");
+            log.info("HeaderFilter 生成 traceId: {}", traceId);
         }
 
         // 存入MDC供日志追踪[7](@ref)

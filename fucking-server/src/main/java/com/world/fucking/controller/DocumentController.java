@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/pdf")
+@RequestMapping("/document")
 @Slf4j
-public class ExcelController {
+public class DocumentController {
 
     @PostMapping("/downloadPDF")
     public void downloadPDF(HttpServletResponse response) {
@@ -37,10 +37,11 @@ public class ExcelController {
             // 3.设置事件(水印、页眉、logo)等
             NewPdfPageEventHelper helper = new NewPdfPageEventHelper();
             // 水印
-            helper.setImageWaterWater("D:\\out\\a.png");
+            String imageWaterPath = "D:\\out\\a.png";
+            helper.setImageWaterWater(imageWaterPath);
             helper.setTextWaterWater("这 是 文 字 水 印", true);
             // logo
-            helper.setLogo("D:\\out\\a.png", 80, 40);
+            helper.setLogo(imageWaterPath, 80, 40);
             // 页眉
             helper.setHeader("xxxxx科技股份有限公司");
             // 页码

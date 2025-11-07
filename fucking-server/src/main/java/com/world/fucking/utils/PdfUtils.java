@@ -85,7 +85,7 @@ public class PdfUtils {
             // ttc格式的字体需要加上后缀
             fontName = fontName + ",0";
         }
-        String font = fontPath + fontName;
+        String font = Paths.get(fontPath, fontName).toString();
         return BaseFont.createFont(font, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
     }
 
@@ -142,7 +142,8 @@ public class PdfUtils {
     public static Document createDocument(HttpServletResponse response, String fileName) {
         try {
             response.reset();
-            response.setHeader("Content-Type", "application/pdf-stream");
+            // application/pdf （可以直接预览）  application/pdf-stream（文件流）  application/octet-stream（强制下载）
+            response.setHeader("Content-Type", "application/pdf");
             response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Cache-Control", "no-cache");
@@ -195,7 +196,7 @@ public class PdfUtils {
             table.addCell(createCell(user.getUsername(), textFont, false, true));
             table.addCell(createCell(user.getPassword(), textFont, true, true));
             table.addCell(createCell("11", textFont, true, true));
-            table.addCell(createCell("11", textFont, true, true));
+            table.addCell(createCell("11", textFont, true, false));
         }
         return table;
     }
@@ -228,8 +229,13 @@ public class PdfUtils {
             return cell;
         }
 
-        cell.setBorderWidthLeft(0);
-        cell.setBorderWidthRight(0);
+        if (!args[0]) {
+            cell.setBorderWidthLeft(0);
+        }
+
+        if (!args[1]) {
+            cell.setBorderWidthRight(0);
+        }
         return cell;
     }
 

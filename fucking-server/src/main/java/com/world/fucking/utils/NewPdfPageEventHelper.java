@@ -6,6 +6,8 @@ import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
+
 @Slf4j
 public class NewPdfPageEventHelper extends PdfPageEventHelper {
 
@@ -69,7 +71,10 @@ public class NewPdfPageEventHelper extends PdfPageEventHelper {
                     PdfUtils.addWater(waterMar, textWater, textWaterFull);
                 }
                 if (imageWaterPath != null) {
-                    PdfUtils.addWater(waterMar, imageWaterPath);
+                    File waterFile = new File(imageWaterPath);
+                    if (waterFile.exists()) {
+                        PdfUtils.addWater(waterMar, waterFile.getAbsolutePath());
+                    }
                 }
             }
             if (header) {

@@ -31,6 +31,7 @@ public class TraceFilter implements Filter {
         String traceId = request.getParameter(TRACE_HEADER); // 优先从请求参数获取
         if (traceId == null) {
             traceId = UUID.randomUUID().toString().replace("-", "");
+            log.info("TraceFilter 生成 traceId: {}", traceId);
         }
 
         // 2. 记录请求开始时间
