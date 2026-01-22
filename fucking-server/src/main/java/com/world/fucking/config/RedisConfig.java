@@ -55,7 +55,6 @@ public class RedisConfig {
          */
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         //指定序列化输入的类型，类必须是非final修饰的类
-        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jsonRedisSerializer.setObjectMapper(objectMapper);
         //序列化key value
         redisTemplate.setKeySerializer(new StringRedisSerializer());
