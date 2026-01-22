@@ -1,5 +1,6 @@
 package com.world.fucking.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 @RestController
 @RequestMapping("test")
 @RefreshScope
+@Api(value = "test", tags = "测试")
 public class TestController {
     @Value("${fucking.world.path}")
     private String path;

@@ -1,6 +1,7 @@
 package com.world.fucking.service.impl;
 
 import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Getter
@@ -42,10 +44,11 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
 
     /**
      * 延迟注入自身
+     *
      * @param cityCodeService service
      */
     @Autowired
-    public CityCodeServiceImpl(@Lazy CityCodeServiceImpl cityCodeService){
+    public CityCodeServiceImpl(@Lazy CityCodeServiceImpl cityCodeService) {
         this.cityCodeService = cityCodeService;
     }
 
@@ -71,22 +74,7 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
 
     @Override
     public CityCode queryById(String cityId) {
-        String cityCodeKey = RedisCommonConst.CITY_CODE_PRE_KEY + cityId;
-        if (redisUtil.hasKey(cityCodeKey)) {
-            LOGGER.info("cache:{}", redisUtil.get(cityCodeKey));
-            return JSON.parseObject(redisUtil.get(cityCodeKey).toString(), CityCode.class);
-        }
-
-        RReadWriteLock cityCodeLock = redissonClient.getReadWriteLock("city_code_lock");
-        RLock rLock = cityCodeLock.readLock();
-        try {
-            rLock.lock();
-            CityCode cityCode = super.getById(cityId);
-            redisUtil.set(cityCodeKey, cityCode);
-            return cityCode;
-        } finally {
-            rLock.unlock();
-        }
+        return super.getById(cityId);
     }
 
     @Override
@@ -106,5 +94,27 @@ public class CityCodeServiceImpl extends ServiceImpl<CityCodeMapper, CityCode> i
     @Override
     public Integer updateCityCode(List<CityCode> cityCodeList) {
         return cityCodeService.saveOrUpdateBatch(cityCodeList) ? cityCodeList.size() : 0;
+    }
+
+    @Override
+    public Map<String, String> postCode() {
+        String cityCodeKey = RedisCommonConst.REDIS_COMMON_KEY + RedisCommonConst.CITY_CODE_PRE_KEY;
+        if (redisUtil.hasKey(cityCodeKey)) {
+            LOGGER.info("cache:{}", redisUtil.get(cityCodeKey));
+            return JSON.parseObject(redisUtil.get(cityCodeKey).toString(), new TypeReference<Map<String, String>>() {
+            });
+        }
+
+        RReadWriteLock cityCodeLock = redissonClient.getReadWriteLock(RedisCommonConst.CITY_CODE_LOCK);
+        RLock rLock = cityCodeLock.readLock();
+        try {
+            rLock.lock();
+            List<CityCode> cityCodeList = this.list();
+            Map<String, String> codeMap = cityCodeList.stream().collect(Collectors.toMap(CityCode::getPostCode, CityCode::getArea, (existing, replacement) -> existing));
+            redisUtil.set(cityCodeKey, JSON.toJSONString(codeMap));
+            return codeMap;
+        } finally {
+            rLock.unlock();
+        }
     }
 }

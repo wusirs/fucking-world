@@ -41,4 +41,12 @@ public interface CityCodeService extends IService<CityCode> {
      * @return {@link Integer}
      */
     Integer updateCityCode(List<CityCode> cityCodeList);
+
+    /**
+     * 邮政编码枚举
+     *
+     * @return {@link Map}
+     * @since v1.0.0
+     */
+    Map<String, String> postCode();
 }

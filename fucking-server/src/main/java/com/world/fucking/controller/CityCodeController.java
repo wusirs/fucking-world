@@ -5,10 +5,7 @@ import com.world.fucking.domain.CityCode;
 import com.world.fucking.service.CityCodeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +19,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("cityCode")
-@Api(value = "/cityCode", tags = "城市编码")
+@Api(value = "cityCode", tags = "城市编码")
 public class CityCodeController {
     @Resource
     private CityCodeService cityCodeService;
@@ -59,13 +56,13 @@ public class CityCodeController {
     }
 
     /**
-     * @param cityId 城市id
+     * @param cityId 城市 id
      * @return {@link CityCode}
      * @author heisenberg
      */
     @ApiOperation("查询详情")
-    @PostMapping("/queryById")
-    public CityCode queryById(String cityId) {
+    @PostMapping("/queryById/{cityId}")
+    public CityCode queryById(@PathVariable String cityId) {
         return cityCodeService.queryById(cityId);
     }
 
@@ -79,5 +76,16 @@ public class CityCodeController {
     @PostMapping("/listCityCode")
     public IPage<CityCode> listCityCode(@RequestBody Map<String, String> parameter) {
         return cityCodeService.listCityCode(parameter);
+    }
+
+    /**
+     * 邮政编码枚举
+     *
+     * @return {@link Map}
+     */
+    @ApiOperation("邮政编码")
+    @GetMapping("postCode")
+    public Map<String, String> postCode() {
+        return cityCodeService.postCode();
     }
 }

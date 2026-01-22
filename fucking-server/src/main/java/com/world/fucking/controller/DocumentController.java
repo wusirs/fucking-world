@@ -9,6 +9,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/document")
 @Slf4j
+@Api(value = "document", tags = "文档")
 public class DocumentController {
 
     @PostMapping("/downloadPDF")

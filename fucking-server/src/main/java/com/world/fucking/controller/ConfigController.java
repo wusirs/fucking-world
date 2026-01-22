@@ -1,5 +1,6 @@
 package com.world.fucking.controller;
 
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 @RefreshScope
 @Slf4j
+@Api(value = "config", tags = "配置")
 public class ConfigController {
 
     /**

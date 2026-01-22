@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.world.fucking.domain.Comment;
 import com.world.fucking.service.CommentService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 @RestController
+@Api(value = "comment", tags = "评论")
 public class CommentController {
     /**
      * 评论服务

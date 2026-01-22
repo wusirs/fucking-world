@@ -2,6 +2,7 @@ package com.world.fucking.controller;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.world.fucking.feign.ConfigControllerFeign;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/feign")
 @Slf4j
+@Api(value = "feign", tags = "feign")
 public class FeignController {
     /**
      * feign interface
