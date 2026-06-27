@@ -25,7 +25,7 @@ public class TestFuture {
             });
             futures.add(completableFuture);
         }
-        CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size() ])).join();
+        CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()])).join();
         stopWatch.stop();
         log.info(stopWatch.toString());
     }
