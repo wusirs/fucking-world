@@ -15,8 +15,8 @@
     </resultMap>
 
     <sql id="baseSql">
-        select fucking_id, prev_comment, user_id, relate_comment, content, video_id
-        from fucking_user_comment
+        select cid, prev_comment, user_id, relate_comment, content, video_id
+        from fucking.fucking_user_comment
     </sql>
 
     <select id="queryAll" resultMap="comment">
