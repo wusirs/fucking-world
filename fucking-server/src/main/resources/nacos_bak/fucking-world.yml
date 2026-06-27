@@ -6,6 +6,12 @@ spring:
   application:
     name: fucking-world
     path: /fucking-world
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 300MB
+      max-request-size: 300MB
+      file-size-threshold: 2MB
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     #    username: wl
@@ -15,7 +21,7 @@ spring:
     username: FW
     password: 1234zxcv
     # url 可以不加数据库名但是实体类的table name注解要加数据库名
-    url: jdbc:mysql://192.168.1.2:3306?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.1.9:3306?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       # 初始化大小，最小，最大
@@ -41,6 +47,14 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       logType: slf4j
       # 配置监控服务器
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   devtools:
     restart:
       enabled: true
@@ -61,14 +75,14 @@ spring:
       matching-strategy: ant_path_matcher
 logging:
   level:
-    org:
-      springframework:
-        boot:
-          autoconfigure:
-            logging: info
+    org.springframework.boot.autoconfigure.logging: INFO
+    root: INFO
+    com.world.fucking: ERROR
+    com.baomidou.mybatisplus: WARN
 mybatis-plus:
   configuration:
-    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+    # log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
 netty:
   server:
     port: 8090
@@ -78,3 +92,5 @@ pattern:
 psr:
   gateway:
     tUrl: http://localhsot:321/test2
+swagger:
+  enable: true
