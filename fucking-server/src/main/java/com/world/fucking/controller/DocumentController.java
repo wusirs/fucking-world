@@ -1,27 +1,33 @@
 package com.world.fucking.controller;
 
-import com.world.fucking.domain.User;
-import com.world.fucking.utils.NewPdfPageEventHelper;
-import com.world.fucking.utils.PdfUtils;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.world.fucking.annotation.RequestLockAnnotation;
+import com.world.fucking.domain.User;
+import com.world.fucking.utils.NewPdfPageEventHelper;
+import com.world.fucking.utils.PdfUtils;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/document")
+@RequestMapping("document")
+@ResponseBody
 @Slf4j
 @Api(value = "document", tags = "文档")
 public class DocumentController {
@@ -95,6 +101,18 @@ public class DocumentController {
             list.add(user);
         }
         return list;
+    }
+
+    @PostMapping("upload")
+    @RequestLockAnnotation
+    public void uploadFile(@RequestParam("file") MultipartFile file,
+                           @RequestParam("userId") String userId,
+                           @RequestParam(value = "remark", required = false) String remark
+    ) {
+        long size = file.getSize();
+        DecimalFormat df = new DecimalFormat("0.000");
+        String originalFilename = file.getOriginalFilename();
+        log.info("upload name : {}, size : {} MB", originalFilename, df.format((float) size / 1024 / 1024));
     }
 }
 
