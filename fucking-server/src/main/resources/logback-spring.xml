@@ -6,6 +6,7 @@
     <springProperty name="service.name" scope="context" source="spring.application.name"
                     defaultValue="fucking-world"/>
     <springProperty name="port" scope="context" source="server.port" defaultValue="0000"/>
+<!--    <springProperty name="logLevel" scope="context" source="server.port" defaultValue="0000"/>-->
     <springProperty scope="context" name="console.log.pattern" source="logging.pattern.console"
                     defaultValue="%red([%d{yyyy-MM-dd HH:mm:ss}])-%green([${ip}:${port}])-%green([%thread])-%highlight(%-5level)-%boldMagenta(%logger{36})-%cyan([%X{traceId}])-%msg%n"/>
     <springProperty scope="context" name="log.pattern" source="logging.pattern.console"
@@ -34,10 +35,10 @@
             <pattern>${log.pattern}</pattern>
             <charset>utf-8</charset>
         </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <!-- 过滤的级别 -->
-            <level>INFO</level>
-        </filter>
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            &lt;!&ndash; 过滤的级别 &ndash;&gt;-->
+<!--            <level>INFO</level>-->
+<!--        </filter>-->
     </appender>
 
     <!-- 系统日志输出 -->
@@ -129,11 +130,24 @@
     <!--        </encoder>-->
     <!--    </appender>-->
     <!--系统操作日志-->
-    <root level="info">
+    <!--  error, info  -->
+<!--  root 配置 level 会导致无法读取到 nacos 配置的日志级别 -->
+    <root>
         <appender-ref ref="console"/>
         <appender-ref ref="async_info"/>
         <appender-ref ref="async_error"/>
         <appender-ref ref="file_console"/>
     </root>
+
+    <!-- 其他配置... 配置放开会导致 nacos 配置失效  -->
+<!--    <logger name="com.world.fucking.mapper" level="WARN" additivity="false">-->
+<!--        &lt;!&ndash; 这里可以关联到你定义的特定appender &ndash;&gt;-->
+<!--        <appender-ref ref="console"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="org.apache.ibatis" level="WARN" additivity="false">-->
+<!--        &lt;!&ndash; 这里可以关联到你定义的特定appender &ndash;&gt;-->
+<!--        <appender-ref ref="console"/>-->
+<!--    </logger>-->
 
 </configuration>
