@@ -1,10 +1,11 @@
 package com.world.fucking.bean.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -35,7 +36,8 @@ public class BankUser {
     /**
      * 出生日期
      */
-    private LocalDate birthday;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime birthday;
 
     /**
      * db数据库存的是 id 字符串 ==> 1,2,3
