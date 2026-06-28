@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * feign 调用接口
+ *
  * @author heisenberg
  */
 @RestController
@@ -27,6 +28,7 @@ public class FeignController {
 
     /**
      * 构造方法
+     *
      * @param configControllerFeign feign
      */
     @Autowired
@@ -38,7 +40,7 @@ public class FeignController {
      * 通过feign 调用接口
      */
     @PostMapping("postFeign")
-    public void postFeign(){
+    public void postFeign() {
         ResponseEntity<String> res = configControllerFeign.dateformat();
         log.info(JSONObject.toJSONString(res));
     }

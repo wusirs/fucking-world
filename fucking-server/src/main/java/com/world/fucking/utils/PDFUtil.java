@@ -25,7 +25,7 @@ public class PDFUtil {
 
 
     /**
-     * 给pdf添加图片水印
+     * 给 pdf 添加图片水印
      *
      * @param contentByte pdf
      * @param path        图片路径

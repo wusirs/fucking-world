@@ -10,11 +10,13 @@ import java.util.Map;
 
 /**
  * comment service
+ *
  * @author heisenberg
  */
 public interface CommentService {
     /**
      * 查询全部
+     *
      * @return {@link List<Comment>}
      * @author heisenberg
      */
@@ -22,6 +24,7 @@ public interface CommentService {
 
     /**
      * 根据条件查询
+     *
      * @return {@link List<Comment>}
      * @author heisenberg
      */
@@ -29,6 +32,7 @@ public interface CommentService {
 
     /**
      * 根据条件查询
+     *
      * @param params 查询条件
      * @return {@link List<Comment>}
      * @author heisenberg
@@ -37,6 +41,7 @@ public interface CommentService {
 
     /**
      * 根据条件分页查询
+     *
      * @param queryCondition 查询条件
      * @return {@link IPage<Comment>}
      * @author heisenberg

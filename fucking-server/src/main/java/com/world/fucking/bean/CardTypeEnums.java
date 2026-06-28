@@ -12,12 +12,13 @@ public enum CardTypeEnums {
 
     private final Integer code;
     private final String label;
+
     CardTypeEnums(Integer code, String label) {
         this.code = code;
         this.label = label;
     }
 
-    public static CardTypeEnums byCode(Integer code){
+    public static CardTypeEnums byCode(Integer code) {
         return Arrays.stream(values()).filter(t -> t.getCode().equals(code)).findFirst().orElse(CREDIT_CARD);
     }
 }

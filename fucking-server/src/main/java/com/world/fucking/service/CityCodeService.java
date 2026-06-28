@@ -9,20 +9,22 @@ import java.util.Map;
 
 
 /**
- * 邮政编码service
+ * 邮政编码 service
+ *
  * @author heisenberg
  * @since 1.0.0
  */
 public interface CityCodeService extends IService<CityCode> {
     /**
      * 查询所有城市编码
+     *
      * @return {@link IPage<CityCode>}
      */
     IPage<CityCode> queryAll();
 
     /**
      *
-     * @param cityId 城市id
+     * @param cityId 主键
      * @return {@link CityCode}
      * @author heisenberg
      */
@@ -30,6 +32,7 @@ public interface CityCodeService extends IService<CityCode> {
 
     /**
      * 条件筛选城市编码
+     *
      * @param parameter 过滤条件
      * @return {@link  IPage<CityCode>}
      */
@@ -37,6 +40,7 @@ public interface CityCodeService extends IService<CityCode> {
 
     /**
      * 更新编码表
+     *
      * @param cityCodeList 列表
      * @return {@link Integer}
      */

@@ -5,7 +5,8 @@ import com.world.fucking.exception.BusinessException;
 import static com.world.fucking.enums.ResultEnum.TIME_EXCEPTION;
 
 /**
- * 雪花算法 生成uuid
+ * 雪花算法 生成 uuid
+ *
  * @author heisenberg
  * @since 1.0.0
  */
@@ -39,7 +40,8 @@ public class SnowflakeIdGenerator {
 
     /**
      * 构造方法
-     * @param workerId 机械id
+     *
+     * @param workerId     机械id
      * @param datacenterId 分布式服务注册中心id
      */
     public SnowflakeIdGenerator(long workerId, long datacenterId) {
@@ -54,7 +56,8 @@ public class SnowflakeIdGenerator {
     }
 
     /**
-     *  生成 uuid
+     * 生成 uuid
+     *
      * @return {@link long}
      */
     public synchronized long nextId() {
@@ -79,6 +82,7 @@ public class SnowflakeIdGenerator {
 
     /**
      * 阻塞到下一毫秒
+     *
      * @param lastTimestamp 最后一次生成id时间戳
      * @return {@link long}
      */

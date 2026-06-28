@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @SpringBootTest(classes = FuckingWorldApplication.class)
@@ -31,7 +31,7 @@ public class MapStructTests {
         List<BankCard> bankCardList = new ArrayList<>();
         BankCard bankCard = new BankCard("123", BigDecimal.valueOf(12), 1, null);
         bankCardList.add(bankCard);
-        BankUser bankUser = new BankUser("123", "张三", "12321421321", new Date(), "1,2,3", bankCardList);
+        BankUser bankUser = new BankUser("123", "张三", "12321421321", LocalDate.now(), "1,2,3", bankCardList);
         log.info(bankUserConvert.po2Dto(bankUser).toString());
     }
 }

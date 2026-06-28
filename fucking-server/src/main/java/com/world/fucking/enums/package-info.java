@@ -1,5 +1,6 @@
 /**
  * 枚举值
+ *
  * @author heisenberg
  * @since 1.0.0
  */

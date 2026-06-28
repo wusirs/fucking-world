@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * 银行卡信息.
+ *
  * @author heisenberg
  * @since 1.0.0
  */
@@ -31,5 +32,5 @@ public class BankCardDto {
     /**
      * 建卡时间.
      */
-    private Date crateTime;
+    private LocalDate crateTime;
 }

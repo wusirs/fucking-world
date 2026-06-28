@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 跨域访问 ip 限制
+ *
  * @author heisenberg
  * @since 1.0.0
  */

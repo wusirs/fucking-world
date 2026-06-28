@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-//@TableName("t_user")
 @ApiModel("用户")
 public class User {
     @ApiModelProperty(value = "username", dataType = "string")

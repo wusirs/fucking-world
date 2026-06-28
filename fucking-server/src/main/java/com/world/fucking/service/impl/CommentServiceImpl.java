@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
 import com.world.fucking.domain.Comment;
 import com.world.fucking.mapper.CommentMapper;
 import com.world.fucking.service.CommentService;
@@ -16,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -27,6 +26,11 @@ import java.util.Objects;
 @Slf4j
 public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
+
+    /**
+     * 时间格式
+     */
+    public static final DateTimeFormatter DATE_TIME_FORMATTER_YH = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Autowired
     public CommentServiceImpl(CommentMapper commentMapper) {
@@ -47,13 +51,21 @@ public class CommentServiceImpl implements CommentService {
         QueryWrapper<Comment> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("video_id", "2001");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date1 = sdf.parse("2023-07-28 12:00:00");
-        Date date2 = sdf.parse("2023-07-29 12:00:00");
-        Date date3 = null;
-        Date date4 = null;
-        Date date5 = sdf.parse("2023-12-01 12:00:00");
-        Date date6 = sdf.parse("2023-12-31 12:00:00");
+
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date date1 = sdf.parse("2023-07-28 12:00:00");
+//        Date date2 = sdf.parse("2023-07-29 12:00:00");
+//        Date date3 = null;
+//        Date date4 = null;
+//        Date date5 = sdf.parse("2023-12-01 12:00:00");
+//        Date date6 = sdf.parse("2023-12-01 12:00:00");
+
+        LocalDateTime date1 = LocalDateTime.parse("2023-07-28 12:00:00", DATE_TIME_FORMATTER_YH);
+        LocalDateTime date2 = LocalDateTime.parse("2023-07-29 12:00:00", DATE_TIME_FORMATTER_YH);
+        LocalDateTime date3 = null;
+        LocalDateTime date4 = null;
+        LocalDateTime date5 = LocalDateTime.parse("2023-12-01 12:00:00", DATE_TIME_FORMATTER_YH);
+        LocalDateTime date6 = LocalDateTime.parse("2023-12-01 12:00:00", DATE_TIME_FORMATTER_YH);
 
         if (date1 != null) {
             logger.error("报错了！！！！");
@@ -103,18 +115,18 @@ public class CommentServiceImpl implements CommentService {
         */
 
         queryWrapper.and(wrapper ->
-                    wrapper.or().or(!(Objects.isNull(date1) && Objects.isNull(date2)),
-                                    wrapperDate -> wrapperDate
-                                            .func(i -> timeGe(i, date1, Comment::getCommentTime))
-                                            .func(j -> timeLe(j, date2, Comment::getCommentTime)))
-                            .or().or(!(Objects.isNull(date3) && Objects.isNull(date4)),
-                                    wrapperDate -> wrapperDate
-                                            .func(i -> timeGe(i, date3, Comment::getCommentTime))
-                                            .func(j -> timeLe(j, date4, Comment::getCommentTime)))
-                            .or().or(!(Objects.isNull(date5) && Objects.isNull(date6)),
-                                    wrapperDate -> wrapperDate
-                                            .func(i -> timeGe(i, date5, Comment::getCommentTime))
-                                            .func(j -> timeLe(j, date6, Comment::getCommentTime)))
+                wrapper.or().or(!(Objects.isNull(date1) && Objects.isNull(date2)),
+                                wrapperDate -> wrapperDate
+                                        .func(i -> timeGe(i, date1, Comment::getCommentTime))
+                                        .func(j -> timeLe(j, date2, Comment::getCommentTime)))
+                        .or().or(!(Objects.isNull(date3) && Objects.isNull(date4)),
+                                wrapperDate -> wrapperDate
+                                        .func(i -> timeGe(i, date3, Comment::getCommentTime))
+                                        .func(j -> timeLe(j, date4, Comment::getCommentTime)))
+                        .or().or(!(Objects.isNull(date5) && Objects.isNull(date6)),
+                                wrapperDate -> wrapperDate
+                                        .func(i -> timeGe(i, date5, Comment::getCommentTime))
+                                        .func(j -> timeLe(j, date6, Comment::getCommentTime)))
         );
 
         List<Comment> comments = commentMapper.selectList(queryWrapper);
@@ -123,15 +135,15 @@ public class CommentServiceImpl implements CommentService {
         return comments;
     }
 
-    private static void timeLe(QueryWrapper<Comment> j, Date date2, SFunction<Comment, ?> commentTime) {
+    private static void timeLe(QueryWrapper<Comment> j, LocalDateTime date2, SFunction<Comment, ?> commentTime) {
         if (Objects.nonNull(date2)) {
-            j.lambda().le(commentTime, date2);
+            j.lambda().le(commentTime, date2.format(DATE_TIME_FORMATTER_YH));
         }
     }
 
-    private static void timeGe(QueryWrapper<Comment> i, Date date1, SFunction<Comment, ?> commentTime) {
+    private static void timeGe(QueryWrapper<Comment> i, LocalDateTime date1, SFunction<Comment, ?> commentTime) {
         if (Objects.nonNull(date1)) {
-            i.lambda().ge(commentTime, date1);
+            i.lambda().ge(commentTime, date1.format(DATE_TIME_FORMATTER_YH));
         }
     }
 

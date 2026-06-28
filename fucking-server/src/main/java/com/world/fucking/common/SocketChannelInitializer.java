@@ -8,7 +8,8 @@ import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 
 /**
- * Socket通道初始化器
+ * Socket 通道初始化器
+ *
  * @author heisenberg
  */
 public class SocketChannelInitializer extends ChannelInitializer<SocketChannel> {

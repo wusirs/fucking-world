@@ -14,9 +14,9 @@ import org.springframework.lang.NonNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Result<T>{
+public class Result<T> {
     /**
-     *状态码
+     * 状态码
      */
     private Integer code;
 
@@ -33,27 +33,28 @@ public class Result<T>{
      * @return {@link Result<T>}
      * @author heisenberg
      */
-    public static <T> Result<T> success(@NonNull T data){
+    public static <T> Result<T> success(@NonNull T data) {
         return new Result<>(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
     }
 
     /**
      *
      * @param message 返回信息
-     * @param data 返回值
+     * @param data    返回值
      * @return {@link Result<T>}
      * @author heisenberg
      */
-    public static <T> Result<T> success(@NonNull String message, @NonNull T data){
+    public static <T> Result<T> success(@NonNull String message, @NonNull T data) {
         return new Result<>(ResultEnum.SUCCESS.getCode(), message, data);
     }
 
     /**
      * 调用失败
+     *
      * @return {@link Result<Object>}
      * @author heisenberg
      */
-    public static Result<Object> failed(){
+    public static Result<Object> failed() {
         return new Result<>(ResultEnum.COMMON_FAILED.getCode(), ResultEnum.COMMON_FAILED.getMessage(), null);
     }
 
@@ -63,7 +64,7 @@ public class Result<T>{
      * @return {@link Result<Object>}
      * @author heisenberg
      */
-    public static  Result<Object> failed(@NonNull String message){
+    public static Result<Object> failed(@NonNull String message) {
         return new Result<>(ResultEnum.COMMON_FAILED.getCode(), message, null);
     }
 
@@ -73,30 +74,30 @@ public class Result<T>{
      * @return {@link Result<Object>}
      * @author heisenberg
      */
-    public static Result<Object> failed(@NonNull IResult errorResult){
+    public static Result<Object> failed(@NonNull IResult errorResult) {
         return new Result<>(errorResult.getCode(), errorResult.getMessage(), null);
     }
 
     /**
      *
-     * @param code 状态码
+     * @param code    状态码
      * @param message 返回消息
      * @return {@link Result<Object>}
      * @author heisenberg
      */
-    public static Result<Object> failed(@NonNull Integer code, @NonNull String message){
+    public static Result<Object> failed(@NonNull Integer code, @NonNull String message) {
         return new Result<>(code, message, null);
     }
 
     /**
      *
-     * @param code 状态码
+     * @param code    状态码
      * @param message 返回消息
-     * @param data 返回值
+     * @param data    返回值
      * @return {@link Result<T>}
      * @author heisenberg
      */
-    public static <T> Result<T> instance(Integer code, String message, T data){
+    public static <T> Result<T> instance(Integer code, String message, T data) {
         Result<T> result = new Result<>();
         result.setCode(code);
         result.setMessage(message);

@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 
 /**
  * 银行卡实体转换器
+ *
  * @author heisenberg
  * @since 1.0.0
  */
@@ -18,6 +19,7 @@ public interface BankCardConvert {
 
     /**
      * po2dto
+     *
      * @param bankCard 银行卡实体
      * @return {@link BankCardDto}
      */
@@ -26,6 +28,7 @@ public interface BankCardConvert {
 
     /**
      * dto2vo
+     *
      * @param bankCardDto 入参
      * @return {@link BankCardVo}
      */
@@ -34,6 +37,7 @@ public interface BankCardConvert {
 
     /**
      * 转义
+     *
      * @param cardType 卡类型
      * @return {@link String}
      */

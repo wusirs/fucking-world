@@ -14,7 +14,7 @@ public class RequestLock {
     private static final Logger LOGGER = LoggerFactory.getLogger(RequestLock.class);
 
     /**
-     * @param pjp 方法连接点
+     * @param pjp                   方法连接点
      * @param requestLockAnnotation 方法 RequestLockAnnotation 注解
      * @return Object
      */

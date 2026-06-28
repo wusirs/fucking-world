@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @TableName("fucking.fucking_user_comment")
@@ -40,5 +40,6 @@ public class Comment {
     private Integer videoId;
 
     @ApiModelProperty(value = "commentTime", dataType = "date")
-    private Date commentTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime commentTime;
 }

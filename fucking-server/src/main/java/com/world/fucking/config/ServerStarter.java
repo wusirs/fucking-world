@@ -23,9 +23,9 @@ public class ServerStarter implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        try{
+        try {
             new SocketServer(port, bossThreads, workerThreads);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             log.error("服务端启动异常：", e);
             Thread.currentThread().interrupt();
         }

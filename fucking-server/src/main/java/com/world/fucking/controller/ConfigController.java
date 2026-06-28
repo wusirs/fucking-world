@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * config 查询
+ *
  * @author heisenberg
  */
 @RestController
@@ -39,6 +40,7 @@ public class ConfigController {
 
     /**
      * 获取时间格式化
+     *
      * @return String
      */
     @GetMapping("dateformat")

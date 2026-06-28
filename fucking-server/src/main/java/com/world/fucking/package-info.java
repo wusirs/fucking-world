@@ -1,5 +1,6 @@
 /**
  * fucking world
+ *
  * @author heisenberg
  * @since 1.0.0
  */

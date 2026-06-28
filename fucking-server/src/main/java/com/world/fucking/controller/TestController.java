@@ -22,10 +22,11 @@ public class TestController {
 
     /**
      * 读取配置文件
+     *
      * @return Object
      */
     @PostMapping("testA")
-    public Object test()  {
+    public Object test() {
         int available;
         byte[] bytes;
         String res = "";

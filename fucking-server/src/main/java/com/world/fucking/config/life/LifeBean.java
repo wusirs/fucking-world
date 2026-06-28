@@ -15,7 +15,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 /**
- * bean的生命周期
+ * bean 的生命周期
  *
  * @author Bella Ciao
  */

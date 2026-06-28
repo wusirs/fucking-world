@@ -1,10 +1,10 @@
 package com.world.fucking.listener;
 
-import com.world.fucking.utils.PDFUtil;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.world.fucking.utils.PDFUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +29,7 @@ public class NewPdfPageEventHelper extends PdfPageEventHelper {
     private boolean pageNum = false;
 
     /**
-     * @param textWater 水印文本
+     * @param textWater     水印文本
      * @param textWaterFull 是否平铺
      */
     public void setTextWaterWater(String textWater, boolean textWaterFull) {
@@ -48,8 +48,8 @@ public class NewPdfPageEventHelper extends PdfPageEventHelper {
 
     /**
      * @param logoImagePath logo图片路径
-     * @param logoWidth 宽
-     * @param logoHeight 高
+     * @param logoWidth     宽
+     * @param logoHeight    高
      */
     public void setLogo(String logoImagePath, float logoWidth, float logoHeight) {
         this.logo = true;
@@ -75,7 +75,7 @@ public class NewPdfPageEventHelper extends PdfPageEventHelper {
      * 每开始一页pdf时回调
      *
      * @param pdfWriter pdf
-     * @param document doc
+     * @param document  doc
      */
     @Override
     public void onStartPage(PdfWriter pdfWriter, Document document) {

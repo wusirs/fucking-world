@@ -1,11 +1,12 @@
 package com.world.fucking.bean.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -36,7 +37,8 @@ public class BankUserVo {
     /**
      * 出生日期
      */
-    private Date birthday;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime birthday;
 
     /**
      * 余额

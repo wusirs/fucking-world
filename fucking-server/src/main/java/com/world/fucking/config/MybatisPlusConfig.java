@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisPlusConfig {
     /**
      * mybatisPlus 分页插件
+     *
      * @return MybatisPlusInterceptor 分页拦截器
      */
     @Bean

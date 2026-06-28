@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class BankUser {
     /**
-     * 用户id
+     * 主键
      */
     private String userId;
 
@@ -35,7 +35,7 @@ public class BankUser {
     /**
      * 出生日期
      */
-    private Date birthday;
+    private LocalDate birthday;
 
     /**
      * db数据库存的是 id 字符串 ==> 1,2,3

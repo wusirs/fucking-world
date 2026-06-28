@@ -27,6 +27,7 @@ public class RequestAuditLog {
 
     /**
      * 处理日志，打印入参
+     *
      * @param joinPoint 切点
      */
     @Before("point()")
@@ -38,8 +39,8 @@ public class RequestAuditLog {
         String methodName = signature.getName();
 
         if (args.length > 0) {
-            logger.info("{}{}.{}：{}",REQUEST_TEXT, simpleName, methodName, args[0]);
-        }else {
+            logger.info("{}{}.{}：{}", REQUEST_TEXT, simpleName, methodName, args[0]);
+        } else {
             logger.info("{}{}.{}", REQUEST_TEXT, simpleName, methodName);
         }
     }

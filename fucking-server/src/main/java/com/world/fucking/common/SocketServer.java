@@ -14,6 +14,7 @@ import java.util.Objects;
 
 /**
  * 服务端
+ *
  * @author heisenberg
  */
 @Slf4j
@@ -22,18 +23,18 @@ public class SocketServer {
     private Integer boosThreads = 1;
     private Integer workerThreads;
 
-    public SocketServer() throws InterruptedException{
+    public SocketServer() throws InterruptedException {
         init();
     }
 
-    public SocketServer(Integer port, Integer boosThreads) throws InterruptedException{
+    public SocketServer(Integer port, Integer boosThreads) throws InterruptedException {
         this.port = port;
         this.boosThreads = boosThreads;
 
         this.init();
     }
 
-    public SocketServer(Integer port, Integer boosThreads, Integer workerThreads) throws InterruptedException{
+    public SocketServer(Integer port, Integer boosThreads, Integer workerThreads) throws InterruptedException {
         this.port = port;
         this.boosThreads = boosThreads;
         this.workerThreads = workerThreads;
@@ -51,9 +52,9 @@ public class SocketServer {
 
         //worker轮询组（负责处理子通道：读/写监听（如NioSocketChannel））
         EventLoopGroup workerGroup;
-        if(Objects.nonNull(this.workerThreads) && this.workerThreads > 0){
-            workerGroup= new NioEventLoopGroup(this.workerThreads);
-        }else{
+        if (Objects.nonNull(this.workerThreads) && this.workerThreads > 0) {
+            workerGroup = new NioEventLoopGroup(this.workerThreads);
+        } else {
             //线程数默认为cpu核心数的2倍
             workerGroup = new NioEventLoopGroup();
         }

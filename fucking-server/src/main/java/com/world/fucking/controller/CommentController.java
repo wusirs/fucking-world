@@ -2,6 +2,7 @@ package com.world.fucking.controller;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.world.fucking.annotation.ResponseNotIntercept;
 import com.world.fucking.domain.Comment;
 import com.world.fucking.service.CommentService;
 import io.swagger.annotations.Api;
@@ -38,6 +39,7 @@ public class CommentController {
 
     /**
      * 测试接口
+     *
      * @param username 姓名
      * @return {@link List<Comment>}
      */
@@ -52,12 +54,14 @@ public class CommentController {
 
     /**
      * 条件查询
+     *
      * @param username 姓名
      * @return {@link List<Comment>}
      * @throws ParseException 解析异常
      */
     @ApiOperation("查询评论")
     @GetMapping("byCondition")
+    @ResponseNotIntercept
     public List<Comment> byCondition(String username) throws ParseException {
         LOGGER.info(username);
         List<Comment> comments = commentService.byCondition();
@@ -67,6 +71,7 @@ public class CommentController {
 
     /**
      * 查询所有
+     *
      * @return {@link List<Comment>}
      */
     @ApiOperation("查询评论")
@@ -77,6 +82,7 @@ public class CommentController {
 
     /**
      * 查询所有
+     *
      * @return {@link List<Comment>}
      */
     @ApiOperation("查询评论")

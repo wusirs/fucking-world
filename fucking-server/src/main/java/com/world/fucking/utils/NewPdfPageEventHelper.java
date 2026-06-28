@@ -58,7 +58,7 @@ public class NewPdfPageEventHelper extends PdfPageEventHelper {
      * 每开始一页pdf时回调
      *
      * @param pdfWriter writer
-     * @param document document
+     * @param document  document
      */
     @Override
     public void onStartPage(PdfWriter pdfWriter, Document document) {

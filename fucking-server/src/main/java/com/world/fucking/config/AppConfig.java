@@ -5,6 +5,7 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * 读取配置文件
+ *
  * @author Bella Ciao
  */
 @Configuration
