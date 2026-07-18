@@ -21,7 +21,7 @@ spring:
     username: FW
     password: 1234zxcv
     # url 可以不加数据库名但是实体类的table name注解要加数据库名
-    url: jdbc:mysql://192.168.1.9:3306?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.1.8:3306?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       # 初始化大小，最小，最大
@@ -77,8 +77,9 @@ logging:
   level:
     org.springframework.boot.autoconfigure.logging: INFO
     root: INFO
-    com.world.fucking: ERROR
-    com.baomidou.mybatisplus: WARN
+    # ERROR,DEBUG,INFO
+    com.world.fucking: INFO
+    com.baomidou.mybatisplus: INFO
 mybatis-plus:
   configuration:
     # log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
@@ -94,3 +95,6 @@ psr:
     tUrl: http://localhsot:321/test2
 swagger:
   enable: true
+feign:
+  httpclient:
+    enabled: true
