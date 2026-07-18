@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * config 查询
  *
@@ -46,6 +49,8 @@ public class ConfigController {
     @GetMapping("dateformat")
     public String dateformat() {
         log.info("url: {}, tUrl: {}", psrUrl, psrTUrl);
-        return dateformat;
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateformat);
+        return formatter.format(localDateTime);
     }
 }

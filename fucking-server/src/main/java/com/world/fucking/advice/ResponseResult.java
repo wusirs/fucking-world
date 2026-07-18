@@ -62,7 +62,7 @@ public class ResponseResult implements ResponseBodyAdvice<Object> {
 
         if (body instanceof String) {
             //解决返回值为字符串时，不能正常包装
-            return JSON.toJSONString(body);
+            return body;
         }
 
         return Result.success(body);

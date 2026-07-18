@@ -33,6 +33,13 @@ public class TraceFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
+        // ✅ 关键：multipart 请求直接放行
+        if (request.getContentType() != null &&
+                request.getContentType().startsWith("multipart/")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
         // 1. 生成或获取traceId
         String traceId = request.getParameter(TRACE_HEADER); // 优先从请求参数获取
         if (traceId == null) {
